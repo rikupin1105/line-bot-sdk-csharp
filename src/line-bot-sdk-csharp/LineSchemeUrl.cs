@@ -435,12 +435,14 @@ namespace LineMessagingAPI
         public static UriTemplateAction GetSettingsAddressBooKSyncUriTemplateAction(string label)
             => new UriTemplateAction(label, GetSettingsAddressBooKSyncUrl());
 
+        public static string GetThingsDevicesLinkUrl() => thingsDevicesLink;
+        public static UriTemplateAction GetThingsDevicesLinkUrlTemplateAction(string label) => new UriTemplateAction(label, GetThingsDevicesLinkUrl());
+
         /// <summary>
         /// Opens the "Stickers" settings screen.
         /// </summary>
         /// <returns>String of LINE scheme URL</returns>
         public static string GetSettingsStickerUrl() => settingsSticker;
-
         /// <summary>
         /// Opens the "Stickers" settings screen.
         /// </summary>
