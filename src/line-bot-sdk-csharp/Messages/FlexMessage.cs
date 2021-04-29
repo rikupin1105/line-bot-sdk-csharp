@@ -17,17 +17,17 @@ namespace LineMessagingAPI
             Sender = messageSender;
         }
 
-        public static BubbleContainerFlexMessage CreateBubbleMessage(string altText)
+        public static BubbleContainerFlexMessage CreateBubbleMessage(string altText, IFlexContainer contents)
         {
-            return new BubbleContainerFlexMessage(altText)
+            return new BubbleContainerFlexMessage(altText, contents)
             {
                 Contents = new BubbleContainer()
             };
         }
 
-        public static CarouselContainerFlexMessage CreateCarouselMessage(string altText)
+        public static CarouselContainerFlexMessage CreateCarouselMessage(string altText, IFlexContainer contents)
         {
-            return new CarouselContainerFlexMessage(altText)
+            return new CarouselContainerFlexMessage(altText, contents)
             {
                 Contents = new CarouselContainer()
             };

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LineMessagingAPI
 {
@@ -21,7 +19,7 @@ namespace LineMessagingAPI
         /// Constructor
         /// </summary>
         /// <param name="altText">alt text</param>
-        public BubbleContainerFlexMessage(string altText) : base(altText)
+        public BubbleContainerFlexMessage(string altText, IFlexContainer contents) : base(altText, contents)
         {
 
         }
