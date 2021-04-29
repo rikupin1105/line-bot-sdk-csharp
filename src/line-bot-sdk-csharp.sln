@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "line-bot-sdk-csharp", "line-bot-sdk-csharp\line-bot-sdk-csharp.csproj", "{05D6B392-9E4F-4F35-B1F9-72F907D9C3D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionAppSample", "FunctionAppSample\FunctionAppSample.csproj", "{9F7E4BE7-15F8-4402-B05F-EC07C81BB9B0}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
