@@ -147,38 +147,44 @@ namespace LineMessagingAPI
         /// Send push messages.
         /// https://developers.line.biz/ja/reference/messaging-api/#send-push-message
         /// </summary>
-        public virtual async Task PushMessageAsync(string to, IList<ISendMessage> messages, bool notificationDisabled = false)
+        public virtual async Task PushMessageAsync(string to, IList<ISendMessage> messages, bool notificationDisabled = false, string RetryKey = null)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, $"{_uri}/bot/message/push");
+
+            if (RetryKey != null)
+            {
+                _client.DefaultRequestHeaders.Add("X-Line-Retry-Key", RetryKey);
+            }
+
             var content = JsonConvert.SerializeObject(new { to, messages, notificationDisabled }, _jsonSerializerSettings);
             request.Content = new StringContent(content, Encoding.UTF8, "application/json");
 
             var response = await _client.SendAsync(request).ConfigureAwait(false);
             await response.EnsureSuccessStatusCodeAsync().ConfigureAwait(false);
         }
-        public virtual Task PushTextAsync(string to, string message, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null)
+        public virtual Task PushTextAsync(string to, string message, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null)
         {
-            return PushMessageAsync(to, new ISendMessage[] { new TextMessage(message, quickReply, messageSender) }, notificationDisabled);
+            return PushMessageAsync(to, new ISendMessage[] { new TextMessage(message, quickReply, messageSender) }, notificationDisabled, RetryKey);
         }
-        public virtual Task PushStickerAsync(string to, string packageId, string stickerId, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null)
+        public virtual Task PushStickerAsync(string to, string packageId, string stickerId, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null)
         {
-            return PushMessageAsync(to, new ISendMessage[] { new StickerMessage(packageId, stickerId, quickReply, messageSender) }, notificationDisabled);
+            return PushMessageAsync(to, new ISendMessage[] { new StickerMessage(packageId, stickerId, quickReply, messageSender) }, notificationDisabled, RetryKey);
         }
-        public virtual Task PushImageAsync(string to, string originalContentUrl, string previewImageUrl, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null)
+        public virtual Task PushImageAsync(string to, string originalContentUrl, string previewImageUrl, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null)
         {
-            return PushMessageAsync(to, new ISendMessage[] { new ImageMessage(originalContentUrl, previewImageUrl, quickReply, messageSender) }, notificationDisabled);
+            return PushMessageAsync(to, new ISendMessage[] { new ImageMessage(originalContentUrl, previewImageUrl, quickReply, messageSender) }, notificationDisabled, RetryKey);
         }
-        public virtual Task PushVideoAsync(string to, string originalContentUrl, string previewImageUrl, string trackingId, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null)
+        public virtual Task PushVideoAsync(string to, string originalContentUrl, string previewImageUrl, string trackingId, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null)
         {
-            return PushMessageAsync(to, new ISendMessage[] { new VideoMessage(originalContentUrl, previewImageUrl, trackingId, quickReply, messageSender) }, notificationDisabled);
+            return PushMessageAsync(to, new ISendMessage[] { new VideoMessage(originalContentUrl, previewImageUrl, trackingId, quickReply, messageSender) }, notificationDisabled, RetryKey);
         }
-        public virtual Task PushAudioAsync(string to, string originalContentUrl, long duration, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null)
+        public virtual Task PushAudioAsync(string to, string originalContentUrl, long duration, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null)
         {
-            return PushMessageAsync(to, new ISendMessage[] { new AudioMessage(originalContentUrl, duration, quickReply, messageSender) }, notificationDisabled);
+            return PushMessageAsync(to, new ISendMessage[] { new AudioMessage(originalContentUrl, duration, quickReply, messageSender) }, notificationDisabled, RetryKey);
         }
-        public virtual Task PushLocationAsync(string to, string title, string address, decimal latitude, decimal longitude, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null)
+        public virtual Task PushLocationAsync(string to, string title, string address, decimal latitude, decimal longitude, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null)
         {
-            return PushMessageAsync(to, new ISendMessage[] { new LocationMessage(title, address, latitude, longitude, quickReply, messageSender) }, notificationDisabled);
+            return PushMessageAsync(to, new ISendMessage[] { new LocationMessage(title, address, latitude, longitude, quickReply, messageSender) }, notificationDisabled, RetryKey);
         }
 
         /// <summary>
@@ -189,9 +195,13 @@ namespace LineMessagingAPI
         /// <param name="to">IDs of the receivers. Max: 500 users</param>
         /// <param name="messages">Reply messages. Up to 5 messages.</param>
         /// <param name="notificationDisabled">Notify the user.</param>
-        public virtual async Task MultiCastMessageAsync(IList<string> to, IList<ISendMessage> messages, bool notificationDisabled = false)
+        public virtual async Task MultiCastMessageAsync(IList<string> to, IList<ISendMessage> messages, bool notificationDisabled = false, string RetryKey = null)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, $"{_uri}/bot/message/multicast");
+            if (RetryKey != null)
+            {
+                _client.DefaultRequestHeaders.Add("X-Line-Retry-Key", RetryKey);
+            }
             var content = JsonConvert.SerializeObject(new { to, messages, notificationDisabled }, _jsonSerializerSettings);
             request.Content = new StringContent(content, Encoding.UTF8, "application/json");
             var response = await _client.SendAsync(request).ConfigureAwait(false);
@@ -206,7 +216,7 @@ namespace LineMessagingAPI
         /// <param name="to">IDs of the receivers. Max: 500 users</param>
         /// <param name="notificationDisabled">Notify the user.</param>
         /// <param name="messages">Reply messages. Up to 5 messages.</param>
-        public virtual async Task MultiCastMessageWithJsonAsync(IList<string> to, bool notificationDisabled = false, params string[] messages)
+        public virtual async Task MultiCastMessageWithJsonAsync(IList<string> to, bool notificationDisabled = false, string RetryKey = null, params string[] messages)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, $"{_uri}/bot/message/multicast");
             var json =
@@ -215,7 +225,10 @@ $@"{{
     ""messages"" : [{string.Join(", ", messages)}] 
     ""notificationDisabled"" : {notificationDisabled}
 }}";
-
+            if (RetryKey != null)
+            {
+                _client.DefaultRequestHeaders.Add("X-Line-Retry-Key", RetryKey);
+            }
             request.Content = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await _client.SendAsync(request).ConfigureAwait(false);
             await response.EnsureSuccessStatusCodeAsync().ConfigureAwait(false);
@@ -229,9 +242,9 @@ $@"{{
         /// <param name="to">IDs of the receivers. Max: 500 users</param>
         /// <param name="notificationDisabled">Notify the user.</param>
         /// <param name="messages">Reply messages. Up to 5 messages.</param>
-        public virtual Task MultiCastMessageAsync(IList<string> to, bool notificationDisabled = false, params string[] messages)
+        public virtual Task MultiCastMessageAsync(IList<string> to, bool notificationDisabled = false, string RetryKey = null, params string[] messages)
         {
-            return MultiCastMessageAsync(to, messages.Select(msg => new TextMessage(msg)).ToArray(), notificationDisabled);
+            return MultiCastMessageAsync(to, messages.Select(msg => new TextMessage(msg)).ToArray(), notificationDisabled, RetryKey);
         }
 
         /// <summary>
@@ -253,9 +266,13 @@ $@"{{
         /// </summary>
         /// <param name="messages">Reply text messages. Up to 5 messages.</param>
         /// <param name="notificationDisabled">Notify the user.</param>
-        public virtual async Task BroadCastMessageAsync(IList<ISendMessage> messages, bool notificationDisabled = false)
+        public virtual async Task BroadCastMessageAsync(IList<ISendMessage> messages, bool notificationDisabled = false, string RetryKey = null)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, $"{_uri}/bot/message/broadcast");
+            if (RetryKey != null)
+            {
+                _client.DefaultRequestHeaders.Add("X-Line-Retry-Key", RetryKey);
+            }
             var content = JsonConvert.SerializeObject(new { messages, notificationDisabled }, _jsonSerializerSettings);
             request.Content = new StringContent(content, Encoding.UTF8, "application/json");
 
@@ -270,9 +287,9 @@ $@"{{
         /// </summary>
         /// <param name="notificationDisabled">Notify the user.</param>
         /// <param name="messages">Reply text messages. Up to 5 messages.</param>
-        public virtual Task BroadCastMessageAsync(bool notificationDisabled = false, params string[] messages)
+        public virtual Task BroadCastMessageAsync(bool notificationDisabled = false, string RetryKey = null, params string[] messages)
         {
-            return BroadCastMessageAsync(messages.Select(msg => new TextMessage(msg)).ToArray(), notificationDisabled);
+            return BroadCastMessageAsync(messages.Select(msg => new TextMessage(msg)).ToArray(), notificationDisabled, RetryKey);
         }
 
         /// <summary>

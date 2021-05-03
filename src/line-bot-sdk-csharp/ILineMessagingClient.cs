@@ -32,13 +32,13 @@ namespace LineMessagingAPI
         /// Send response messages.
         /// /// https://developers.line.biz/ja/reference/messaging-api/#send-push-message
         /// </summary>
-        Task PushMessageAsync(string to, IList<ISendMessage> messages, bool notificationDisabled = false);
-        Task PushTextAsync(string to, string message, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null);
-        Task PushStickerAsync(string to, string packageId, string stickerId, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null);
-        Task PushImageAsync(string to, string originalContentUrl, string previewImageUrl, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null);
-        Task PushVideoAsync(string to, string originalContentUrl, string previewImageUrl, string trackingId, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null);
-        Task PushAudioAsync(string to, string originalContentUrl, long duration, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null);
-        Task PushLocationAsync(string to, string title, string address, decimal latitude, decimal longitude, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null);
+        Task PushMessageAsync(string to, IList<ISendMessage> messages, bool notificationDisabled = false, string RetryKey = null);
+        Task PushTextAsync(string to, string message, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null);
+        Task PushStickerAsync(string to, string packageId, string stickerId, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null);
+        Task PushImageAsync(string to, string originalContentUrl, string previewImageUrl, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null);
+        Task PushVideoAsync(string to, string originalContentUrl, string previewImageUrl, string trackingId, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null);
+        Task PushAudioAsync(string to, string originalContentUrl, long duration, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null);
+        Task PushLocationAsync(string to, string title, string address, decimal latitude, decimal longitude, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null);
 
         /// <summary>
         /// マルチキャストメッセージを送る。
@@ -48,7 +48,7 @@ namespace LineMessagingAPI
         /// <param name="to">IDs of the receivers. Max: 500 users</param>
         /// <param name="messages">Reply messages. Up to 5 messages.</param>
         /// <param name="notificationDisabled">Notify the user.</param>
-        Task MultiCastMessageAsync(IList<string> to, IList<ISendMessage> messages, bool notificationDisabled = false);
+        Task MultiCastMessageAsync(IList<string> to, IList<ISendMessage> messages, bool notificationDisabled = false, string RetryKey = null);
 
         /// <summary>
         /// マルチキャストメッセージを送る。
@@ -58,7 +58,7 @@ namespace LineMessagingAPI
         /// <param name="to">IDs of the receivers. Max: 500 users</param>
         /// <param name="notificationDisabled">Notify the user.</param>
         /// <param name="messages">Set reply messages with Json string.</param>
-        Task MultiCastMessageWithJsonAsync(IList<string> to, bool notificationDisabled = false, params string[] messages);
+        Task MultiCastMessageWithJsonAsync(IList<string> to, bool notificationDisabled = false, string RetryKey = null, params string[] messages);
 
         /// <summary>
         /// マルチキャストメッセージを送る。
@@ -68,7 +68,7 @@ namespace LineMessagingAPI
         /// <param name="to">IDs of the receivers. Max: 500 users</param>
         /// <param name="notificationDisabled">Notify the user.</param>
         /// <param name="messages">Reply text messages. Up to 5 messages.</param>
-        Task MultiCastMessageAsync(IList<string> to, bool notificationDisabled = false, params string[] messages);
+        Task MultiCastMessageAsync(IList<string> to, bool notificationDisabled = false, string RetryKey = null, params string[] messages);
 
         /// <summary>
         /// ナローキャストメッセージの進行状況を取得する
@@ -85,7 +85,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name="notificationDisabled">Notify the user.</param>
         /// <param name="messages">Reply text messages. Up to 5 messages.</param>
-        Task BroadCastMessageAsync(IList<ISendMessage> messages, bool notificationDisabled = false);
+        Task BroadCastMessageAsync(IList<ISendMessage> messages, bool notificationDisabled = false, string RetryKey = null);
 
         /// <summary>
         /// ブロードキャストキャストメッセージを送る。
@@ -94,7 +94,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name="notificationDisabled">Notify the user.</param>
         /// <param name="messages">Reply text messages. Up to 5 messages.</param>
-        Task BroadCastMessageAsync(bool notificationDisabled = false, params string[] messages);
+        Task BroadCastMessageAsync(bool notificationDisabled = false, string RetryKey = null, params string[] messages);
 
         /// <summary>
         /// コンテンツを取得する
