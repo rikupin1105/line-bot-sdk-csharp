@@ -89,7 +89,7 @@ namespace LineMessagingAPI.Liff
         public async Task<IList<LiffApp>> GetAllLiffAppAsync()
         {
             var content = await _client.GetStringAsync(_requestUri);
-            return JsonConvert.DeserializeAnonymousType(content, new { apps = new LiffApp[0] }).apps;
+            return JsonConvert.DeserializeAnonymousType(content, new { apps = System.Array.Empty<LiffApp>() }).apps;
         }
 
         /// <summary>
