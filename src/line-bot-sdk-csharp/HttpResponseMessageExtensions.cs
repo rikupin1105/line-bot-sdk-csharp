@@ -36,7 +36,7 @@ namespace LineMessagingAPI
                 }
                 catch
                 {
-                    errorMessage = new ErrorResponseMessage() { Message = content, Details = new ErrorDetail[0] };
+                    errorMessage = new ErrorResponseMessage() { Message = content, Details = System.Array.Empty<ErrorDetail>() };
                 }
                 throw new LineResponseException(errorMessage.Message) { StatusCode = response.StatusCode, ResponseMessage = errorMessage };
 
