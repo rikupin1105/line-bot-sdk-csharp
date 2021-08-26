@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -23,7 +25,13 @@ namespace LineMessagingAPI
                 var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    errorMessage = JsonConvert.DeserializeObject<ErrorResponseMessage>(content, new CamelCaseJsonSerializerSettings());
+                    var jsonSerializerSettings = new JsonSerializerSettings()
+                    {
+                        ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                        NullValueHandling = NullValueHandling.Ignore
+                    };
+                    jsonSerializerSettings.Converters.Add(new StringEnumConverter { NamingStrategy = new CamelCaseNamingStrategy() });
+                    errorMessage = JsonConvert.DeserializeObject<ErrorResponseMessage>(content, jsonSerializerSettings);
                 }
                 catch
                 {
