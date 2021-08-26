@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using LineMessagingAPI.Exceptions;
+using System.Collections.Generic;
 
 namespace LineMessagingAPI
 {
@@ -17,32 +18,11 @@ namespace LineMessagingAPI
         /// <summary>
         /// Details of the error
         /// </summary>
-        public IList<ErrorDetails> Details { get; set; }
+        public IList<ErrorDetail> Details { get; set; }
 
         public override string ToString()
         {
             return (Details == null) ? Message : $"{Message},[{string.Join(",", Details)}]";
-        }
-
-        /// <summary>
-        /// Details of the error
-        /// </summary>
-        public class ErrorDetails
-        {
-            /// <summary>
-            /// Details of the error
-            /// </summary>
-            public string Message { get; set; }
-
-            /// <summary>
-            /// Location of where the error occurred
-            /// </summary>
-            public string Property { get; set; }
-
-            public override string ToString()
-            {
-                return $"{{{Message}, {Property}}}";
-            }
         }
     }
 }
