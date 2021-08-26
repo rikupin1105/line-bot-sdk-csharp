@@ -8,7 +8,7 @@ namespace LineMessagingAPI
     {
         public static string FromRgb(byte r, byte g, byte b)
         {
-            return $"#{r.ToString("x2")}{g.ToString("x2")}{b.ToString("x2")}";
+            return $"#{r:x2}{g:x2}{b:x2}";
         }
 
         public static string AliceBlue ="#F0F8FF";
