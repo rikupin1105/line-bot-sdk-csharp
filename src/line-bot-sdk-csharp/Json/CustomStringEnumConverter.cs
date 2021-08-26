@@ -6,13 +6,9 @@ using System.Linq;
 
 namespace LineMessagingAPI
 {
-
-
     public class CustomStringEnumConverter<TEnum> : StringEnumConverter where TEnum : struct, Enum
     {
         private readonly IDictionary<TEnum, string> enumStrPairs;
-
-
 
         public CustomStringEnumConverter(IDictionary<TEnum, string> enumStrPairs)
         {
@@ -30,7 +26,6 @@ namespace LineMessagingAPI
                     return enumStrPairs.First(kvp => value == kvp.Value).Key;
                 }
             }
-
             return base.ReadJson(reader, objectType, existingValue, serializer);
         }
 
@@ -45,7 +40,6 @@ namespace LineMessagingAPI
             {
                 base.WriteJson(writer, value, serializer);
             }
-            
         }
     }
 }
