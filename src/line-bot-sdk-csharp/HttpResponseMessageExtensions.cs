@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using LineMessagingAPI.Exceptions;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using System.Net.Http;
@@ -35,7 +36,7 @@ namespace LineMessagingAPI
                 }
                 catch
                 {
-                    errorMessage = new ErrorResponseMessage() { Message = content, Details = new ErrorResponseMessage.ErrorDetails[0] };
+                    errorMessage = new ErrorResponseMessage() { Message = content, Details = new ErrorDetail[0] };
                 }
                 throw new LineResponseException(errorMessage.Message) { StatusCode = response.StatusCode, ResponseMessage = errorMessage };
 
