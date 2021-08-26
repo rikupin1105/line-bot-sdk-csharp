@@ -625,6 +625,7 @@ $@"{{
         public virtual async Task DeleteRichMenuAsync(string richMenuId)
         {
             var response = await _client.DeleteAsync($"{_uri}/bot/richmenu/{richMenuId}");
+            await response.EnsureSuccessStatusCodeAsync().ConfigureAwait(false);
         }
 
         /// <summary>
