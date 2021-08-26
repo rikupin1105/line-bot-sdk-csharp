@@ -13,9 +13,9 @@ namespace LineMessagingAPI.Liff
     /// </summary>
     public class LiffClient
     {
-        private HttpClient _client;
-        private JsonSerializerSettings _jsonSerializerSettings;
-        private string _requestUri;
+        private readonly HttpClient _client;
+        private readonly JsonSerializerSettings _jsonSerializerSettings;
+        private readonly string _requestUri;
 
         /// <summary>
         /// Constructor
