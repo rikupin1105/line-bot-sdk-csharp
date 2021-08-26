@@ -15,9 +15,9 @@ namespace LineMessagingAPI
     {
         private const string DEFAULT_URI = "https://api.line.me/v2";
 
-        private HttpClient _client;
-        private JsonSerializerSettings _jsonSerializerSettings;
-        private string _uri;
+        private readonly HttpClient _client;
+        private readonly JsonSerializerSettings _jsonSerializerSettings;
+        private readonly string _uri;
 
         public LineMessagingClient(string channelAccessToken, string uri = DEFAULT_URI)
         {
