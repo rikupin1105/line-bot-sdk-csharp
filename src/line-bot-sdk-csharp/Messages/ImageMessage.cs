@@ -15,19 +15,17 @@
         public Sender Sender { get; set; }
 
         /// <summary>
-        /// Image URL (Max: 1000 characters)
+        /// Image URL (Max: 2000 characters)
         /// HTTPS
-        /// JPEG
-        /// Max: 1024 x 1024
-        /// Max: 1 MB
+        /// JPEG PNG
+        /// Max: 10 MB
         /// </summary>
         public string OriginalContentUrl { get; }
 
         /// <summary>
-        /// Preview image URL (Max: 1000 characters)
+        /// Preview image URL (Max: 2000 characters)
         /// HTTPS
         /// JPEG
-        /// Max: 240 x 240
         /// Max: 1 MB
         /// </summary>
         public string PreviewImageUrl { get; }
@@ -36,17 +34,15 @@
         /// Constructor
         /// </summary>
         /// <param name="originalContentUrl">
-        /// Image URL (Max: 1000 characters)
+        /// Image URL (Max: 2000 characters)
         /// HTTPS
-        /// JPEG
-        /// Max: 1024 x 1024
-        /// Max: 1 MB
+        /// JPEG PNG
+        /// Max: 10 MB
         /// </param>
         /// <param name="previerImageUrl">
-        /// Preview image URL (Max: 1000 characters)
+        /// Preview image URL (Max: 2000 characters)
         /// HTTPS
-        /// JPEG
-        /// Max: 240 x 240
+        /// JPEG PNG
         /// Max: 1 MB
         /// </param>
         /// <param name="quickReply">

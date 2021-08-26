@@ -18,7 +18,7 @@ namespace LineMessagingAPI
         public Sender Sender { get; set; }
 
         /// <summary>
-        /// Base URL of image (Max: 1000 characters)
+        /// Base URL of image (Max: 2000 characters)
         /// HTTPS
         /// </summary>
         public string BaseUrl { get; }
@@ -50,7 +50,7 @@ namespace LineMessagingAPI
         /// Constructor
         /// </summary>
         /// <param name="baseUrl">
-        /// Base URL of image (Max: 1000 characters)
+        /// Base URL of image (Max: 2000 characters)
         /// HTTPS
         /// </param>
         /// <param name="altText">

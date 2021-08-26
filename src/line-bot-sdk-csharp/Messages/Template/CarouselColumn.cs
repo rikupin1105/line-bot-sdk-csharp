@@ -11,12 +11,12 @@ namespace LineMessagingAPI
     public class CarouselColumn
     {
         /// <summary>
-        /// Image URL (Max: 1000 characters)
+        /// Image URL (Max: 2000 characters)
         /// HTTPS
-        /// JPEG or PNG
-        /// Aspect ratio: 1:1.51
+        /// JPEG PNG
+        /// Aspect resio: 1:1.51
         /// Max width: 1024px
-        /// Max: 1 MB
+        /// Max: 10 MB
         /// </summary>
         public string ThumbnailImageUrl { get; }
 
@@ -58,12 +58,12 @@ namespace LineMessagingAPI
         /// Max: 60 characters(message with an image or title)
         /// </param>
         /// <param name="thumbnailImageUrl">
-        /// Image URL (Max: 1000 characters)
+        /// Image URL (Max: 2000 characters)
         /// HTTPS
-        /// JPEG or PNG
-        /// Aspect ratio: 1:1.51
+        /// JPEG PNG
+        /// Aspect resio: 1:1.51
         /// Max width: 1024px
-        /// Max: 1 MB
+        /// Max: 10 MB
         /// </param>
         /// <param name="title">
         /// Title

@@ -15,19 +15,17 @@
         public Sender Sender { get; set; }
 
         /// <summary>
-        /// URL of video file (Max: 1000 characters)
+        /// URL of video file (Max: 2000 characters)
         /// HTTPS
         /// mp4
-        /// Less than 1 minute
         /// Max: 10 MB
         /// </summary>
         public string OriginalContentUrl { get; }
 
         /// <summary>
-        /// URL of preview image (Max: 1000 characters)
+        /// URL of preview image (Max: 2000 characters)
         /// HTTPS
-        /// JPEG
-        /// Max: 240 x 240
+        /// JPEG PNG
         /// Max: 1 MB
         /// </summary>
         public string PreviewImageUrl { get; set; }
@@ -41,17 +39,15 @@
         /// Constructor
         /// </summary>
         /// <param name="originalContentUrl">
-        /// URL of video file (Max: 1000 characters)
+        /// URL of video file (Max: 2000 characters)
         /// HTTPS
         /// mp4
-        /// Less than 1 minute
         /// Max: 10 MB
         /// </param>
         /// <param name="previerImageUrl">
-        /// URL of preview image (Max: 1000 characters)
+        /// URL of preview image (Max: 2000 characters)
         /// HTTPS
-        /// JPEG
-        /// Max: 240 x 240
+        /// JPEG PNG
         /// Max: 1 MB
         /// </param>
         /// <param name="quickReply">

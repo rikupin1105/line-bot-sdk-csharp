@@ -3,19 +3,19 @@
     public class Video
     {
         /// <summary>
-        /// URL of the video file (Max: 1000 characters)
-        /// HTTPS, mp4
-        /// / Max: 1 minute
-        /// / Max: 10 MB
-        /// / Note: A very wide or tall video may be cropped when played in some environments.
+        /// URL of the video file (Max: 2000 characters)
+        /// HTTPS
+        /// mp4
+        /// Max: 200 MB
+        /// Note: A very wide or tall video may be cropped when played in some environments.
         /// </summary>
         public string OriginalContentUrl { get; }
 
         /// <summary>
-        /// URL of the preview image (Max: 1000 characters)
-        /// HTTP, JPEG
-        /// / Max: 240 x 240 pixels
-        /// / Max: 1 MB
+        /// URL of the preview image (Max: 2000 characters)
+        /// HTTP
+        /// JPEN PNG
+        /// Max: 1 MB
         /// </summary>
         public string PreviewImageUrl { get; }
 

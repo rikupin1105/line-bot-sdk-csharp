@@ -6,12 +6,12 @@
     public class ImageCarouselColumn
     {
         /// <summary>
-        /// Image URL (Max: 1000 characters)
+        /// Image URL (Max: 2000 characters)
         /// HTTPS
-        /// JPEG or PNG
+        /// JPEG PNG
         /// Aspect ratio: 1:1
         /// Max width: 1024px
-        /// Max: 1 MB
+        /// Max: 10 MB
         /// </summary>
         public string ImageUrl { get; }
 
@@ -24,12 +24,12 @@
         /// Constructor
         /// </summary>
         /// <param name="imageUrl">
-        /// Image URL (Max: 1000 characters)
+        /// Image URL (Max: 2000 characters)
         /// HTTPS
-        /// JPEG or PNG
+        /// JPEG PNG
         /// Aspect ratio: 1:1
         /// Max width: 1024px
-        /// Max: 1 MB
+        /// Max: 10 MB
         /// </param>
         /// <param name="action">
         /// Action when image is tapped

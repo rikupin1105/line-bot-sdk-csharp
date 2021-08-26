@@ -3,6 +3,14 @@
     public class ImageComponent : IFlexComponent
     {
         public FlexComponentType Type => FlexComponentType.Image;
+
+        /// <summary>
+        /// image URL (Max: 2000 characters)
+        /// HTTPS
+        /// JPEG PNG
+        /// Max: 1024 x 1024
+        /// Max: 10 MB
+        /// </summary>
         public string Url { get; set; }
         public int? Flex { get; set; }
         public string Margin { get; set; }
@@ -19,6 +27,17 @@
         public string BackgroundColor { get; set; }
         public ITemplateAction Action { get; set; }
         public bool Animated { get; set; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="url">
+        /// image URL (Max: 2000 characters)
+        /// HTTPS
+        /// JPEG PNG
+        /// Max: 1024 x 1024
+        /// Max: 10 MB
+        /// </param>
         public ImageComponent(string url)
         {
             Url = url;
