@@ -23,7 +23,11 @@ namespace LineMessagingAPI
         {
             _client = new HttpClient();
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", channelAccessToken);
-            _jsonSerializerSettings = new CamelCaseJsonSerializerSettings();
+            _jsonSerializerSettings = new JsonSerializerSettings()
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                NullValueHandling = NullValueHandling.Ignore
+            };
             _uri = uri;
         }
 
