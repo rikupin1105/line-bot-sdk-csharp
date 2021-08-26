@@ -779,6 +779,7 @@ $@"{{
         public void Dispose()
         {
             _client?.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         protected virtual async Task<string> GetStringAsync(string requestUri)
