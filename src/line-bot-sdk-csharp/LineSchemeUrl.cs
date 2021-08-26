@@ -69,7 +69,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name="label">Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetCameraUriTemplateAction(string label) => new UriTemplateAction(label, GetCameraUrl());
+        public static UriTemplateAction GetCameraUriTemplateAction(string label) => new(label, GetCameraUrl());
 
         /// <summary>
         /// Opens the "Camera Roll" screen where users can select one image to share in the chat.
@@ -82,7 +82,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name="label">Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetCameraRollSingleUriTemplateAction(string label) => new UriTemplateAction(label, GetCameraRollSingleUrl());
+        public static UriTemplateAction GetCameraRollSingleUriTemplateAction(string label) => new(label, GetCameraRollSingleUrl());
 
         /// <summary>
         /// Opens the "Camera Roll" screen where users can select multiple images to share in the chat.
@@ -95,7 +95,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name="label">Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetCameraRollMultiUriTemplateAction(string label) => new UriTemplateAction(label, GetCameraRollMultiUrl());
+        public static UriTemplateAction GetCameraRollMultiUriTemplateAction(string label) => new(label, GetCameraRollMultiUrl());
 
         /// <summary>
         /// Opens the "Location" screen. Users can share the current location or drop a pin on the map to select the location they want to share.
@@ -116,7 +116,7 @@ namespace LineMessagingAPI
         /// </para>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetLocationUriTemplateAction(string label) => new UriTemplateAction(label, GetLocationUrl());
+        public static UriTemplateAction GetLocationUriTemplateAction(string label) => new(label, GetLocationUrl());
 
         /// <summary>
         /// Opens one of the following screens depending on the user's friendship status with the bot.<para>
@@ -141,7 +141,7 @@ namespace LineMessagingAPI
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
         public static UriTemplateAction GetTiPUriTemplateAction(string label, string lineId)
-            => new UriTemplateAction(label, GetTiPUrl(lineId));
+            => new(label, GetTiPUrl(lineId));
 
         /// <summary>
         /// Opens the "Share with" screen where users can select friends, groups, or chats to share a link to your bot.
@@ -160,7 +160,7 @@ namespace LineMessagingAPI
         /// </param>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetRemommendOAUriTemplateAction(string label, string lineId) => new UriTemplateAction(label, GetRecommendOAUrl(lineId));
+        public static UriTemplateAction GetRemommendOAUriTemplateAction(string label, string lineId) => new(label, GetRecommendOAUrl(lineId));
 
         /// <summary>
         /// Opens the Timeline screen for your bot.
@@ -179,7 +179,7 @@ namespace LineMessagingAPI
         /// </param>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetHomePublicMainUriTemplateAction(string label, string lineIdWithoutAt) => new UriTemplateAction(label, GetHomePublicMainUrl(lineIdWithoutAt));
+        public static UriTemplateAction GetHomePublicMainUriTemplateAction(string label, string lineIdWithoutAt) => new(label, GetHomePublicMainUrl(lineIdWithoutAt));
 
         /// <summary>
         /// Opens the account page for your bot.
@@ -198,7 +198,7 @@ namespace LineMessagingAPI
         /// </param>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetHomePublicProfileUriTemplateAction(string label, string lineIdWithoutAt) => new UriTemplateAction(label, GetHomePublicProfileUrl(lineIdWithoutAt));
+        public static UriTemplateAction GetHomePublicProfileUriTemplateAction(string label, string lineIdWithoutAt) => new(label, GetHomePublicProfileUrl(lineIdWithoutAt));
 
         /// <summary>
         /// Opens a specific Timeline post for your bot. 
@@ -221,7 +221,7 @@ namespace LineMessagingAPI
         /// <param name="postId">post ID</param>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetHomePublicPostUriTemplateAction(string label, string lineIdWithoutAt, string postId) => new UriTemplateAction(label, GetHomePublicPostUrl(lineIdWithoutAt, postId));
+        public static UriTemplateAction GetHomePublicPostUriTemplateAction(string label, string lineIdWithoutAt, string postId) => new(label, GetHomePublicPostUrl(lineIdWithoutAt, postId));
 
         /// <summary>
         /// Opens the "Share with" screen where users can select friends, groups, or chats to send a preset text message.<para> 
@@ -238,7 +238,7 @@ namespace LineMessagingAPI
         /// <param name="textMessage">Text message</param>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetMsgTextUriTemplateAction(string label, string textMessage) => new UriTemplateAction(label, GetMsgTextUrl(textMessage));
+        public static UriTemplateAction GetMsgTextUriTemplateAction(string label, string textMessage) => new(label, GetMsgTextUrl(textMessage));
 
         /// <summary>
         /// Opens a chat screen with the bot account with a preset text message that the user can send to your bot.
@@ -260,7 +260,7 @@ namespace LineMessagingAPI
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
         public static UriTemplateAction GetOAMessageUriTemplateAction(string label, string lineId, string textMessage)
-            => new UriTemplateAction(label, GetOAMessageUrl(lineId, textMessage));
+            => new(label, GetOAMessageUrl(lineId, textMessage));
 
         /// <summary>
         /// Opens the "My profile" screen.
@@ -273,7 +273,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetProfileUriTemplateAction(string label) => new UriTemplateAction(label, GetProfileUrl());
+        public static UriTemplateAction GetProfileUriTemplateAction(string label) => new(label, GetProfileUrl());
 
         /// <summary>
         /// Opens the "LINE ID" screen where users can set a LINE ID if they have not already done so.
@@ -286,7 +286,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetProfileSetIdUriTemplateAction(string label) => new UriTemplateAction(label, GetProfileSetIdUrl());
+        public static UriTemplateAction GetProfileSetIdUriTemplateAction(string label) => new(label, GetProfileSetIdUrl());
 
         /// <summary>
         /// Opens the "Chats" screen. 
@@ -299,7 +299,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetChatUriTemplateAction(string label) => new UriTemplateAction(label, GetChatUrl());
+        public static UriTemplateAction GetChatUriTemplateAction(string label) => new(label, GetChatUrl());
 
         /// <summary>
         /// Opens the "Timeline" screen.
@@ -312,7 +312,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetTimelineUriTemplateAction(string label) => new UriTemplateAction(label, GetTimelineUrl());
+        public static UriTemplateAction GetTimelineUriTemplateAction(string label) => new(label, GetTimelineUrl());
 
         /// <summary>
         /// Opens the More screen. This is the screen that is opened when the tab on the furthest right is tapped. 
@@ -327,7 +327,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetMoreUriTemplateAction(string label) => new UriTemplateAction(label, GetMoreUrl());
+        public static UriTemplateAction GetMoreUriTemplateAction(string label) => new(label, GetMoreUrl());
 
         /// <summary>
         /// Opens the "Add friends" screen.
@@ -340,7 +340,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetAddFriendsUriTemplateAction(string label) => new UriTemplateAction(label, GetAddFriendsUrl());
+        public static UriTemplateAction GetAddFriendsUriTemplateAction(string label) => new(label, GetAddFriendsUrl());
 
         /// <summary>
         /// Opens the "Official Accounts" screen.
@@ -353,7 +353,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetOfficialAccountsUriTemplateAction(string label) => new UriTemplateAction(label, GetOfficialAccountsUrl());
+        public static UriTemplateAction GetOfficialAccountsUriTemplateAction(string label) => new(label, GetOfficialAccountsUrl());
 
         /// <summary>
         /// Opens the "Settings" screen.
@@ -365,7 +365,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetSettingsUriTemplateAction(string label) => new UriTemplateAction(label, GetSettingsUrl());
+        public static UriTemplateAction GetSettingsUriTemplateAction(string label) => new(label, GetSettingsUrl());
 
         /// <summary>
         /// Opens the "Account" settings screen. Displays the user's LINE account information.
@@ -378,7 +378,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetSettingsAccountUriTemplateAction(string label) => new UriTemplateAction(label, GetSettingsAccountUrl());
+        public static UriTemplateAction GetSettingsAccountUriTemplateAction(string label) => new(label, GetSettingsAccountUrl());
 
         /// <summary>
         /// Opens the "Authorized apps" screen in the "Account" settings screen.<para> 
@@ -393,7 +393,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetConnectedAppsUriTemplateAction(string label) => new UriTemplateAction(label, GetConnectedAppsUrl());
+        public static UriTemplateAction GetConnectedAppsUriTemplateAction(string label) => new(label, GetConnectedAppsUrl());
 
         /// <summary>
         /// Opens the "Devices" screen in the "Account" settings screen.
@@ -406,7 +406,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetConnectedDevicesUriTemplateAction(string label) => new UriTemplateAction(label, GetConnectedDevicesUrl());
+        public static UriTemplateAction GetConnectedDevicesUriTemplateAction(string label) => new(label, GetConnectedDevicesUrl());
 
         /// <summary>
         /// Opens the "Privacy" screen.
@@ -419,7 +419,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetSettingsPrivacyUriTemplateAction(string label) => new UriTemplateAction(label, GetSettingsPrivacyUrl());
+        public static UriTemplateAction GetSettingsPrivacyUriTemplateAction(string label) => new(label, GetSettingsPrivacyUrl());
 
         /// <summary>
         /// Opens the "Friends" settings screen.
@@ -433,10 +433,10 @@ namespace LineMessagingAPI
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
         public static UriTemplateAction GetSettingsAddressBooKSyncUriTemplateAction(string label)
-            => new UriTemplateAction(label, GetSettingsAddressBooKSyncUrl());
+            => new(label, GetSettingsAddressBooKSyncUrl());
 
         public static string GetThingsDevicesLinkUrl() => thingsDevicesLink;
-        public static UriTemplateAction GetThingsDevicesLinkUrlTemplateAction(string label) => new UriTemplateAction(label, GetThingsDevicesLinkUrl());
+        public static UriTemplateAction GetThingsDevicesLinkUrlTemplateAction(string label) => new(label, GetThingsDevicesLinkUrl());
 
         /// <summary>
         /// Opens the "Stickers" settings screen.
@@ -448,7 +448,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetSettingsStickerUriTemplateAction(string label) => new UriTemplateAction(label, GetSettingsStickerUrl());
+        public static UriTemplateAction GetSettingsStickerUriTemplateAction(string label) => new(label, GetSettingsStickerUrl());
 
         /// <summary>
         /// Opens the "My Stickers" screen in the "Stickers" settings screen.
@@ -461,7 +461,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetStickerShopMyStickerUriTemplateAction(string label) => new UriTemplateAction(label, GetStickerShopMyStickerUrl());
+        public static UriTemplateAction GetStickerShopMyStickerUriTemplateAction(string label) => new(label, GetStickerShopMyStickerUrl());
 
         /// <summary>
         /// (For iOS) Opens the "Themes" settings screen.
@@ -474,7 +474,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetSettingsThemeIosUriTemplateAction(string label) => new UriTemplateAction(label, GetSettingsThemeIosUrl());
+        public static UriTemplateAction GetSettingsThemeIosUriTemplateAction(string label) => new(label, GetSettingsThemeIosUrl());
 
         /// <summary>
         /// (Android only) Opens the "Themes" settings screen.
@@ -487,7 +487,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetSettingsThemeAndroidUriTemplateAction(string label) => new UriTemplateAction(label, GetSettingsThemeAndroidUrl());
+        public static UriTemplateAction GetSettingsThemeAndroidUriTemplateAction(string label) => new(label, GetSettingsThemeAndroidUrl());
 
         /// <summary>
         /// Opens the "My Themes" screen in the "Themes" settings screen.
@@ -500,7 +500,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetThemeSettingsUriTemplateAction(string label) => new UriTemplateAction(label, GetThemeSettingsUrl());
+        public static UriTemplateAction GetThemeSettingsUriTemplateAction(string label) => new(label, GetThemeSettingsUrl());
 
         /// <summary>
         /// Opens the "Authorized apps" screen in the "Notification" settings. 
@@ -515,7 +515,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetNotificationsServiceDetailUriTemplateAction(string label) => new UriTemplateAction(label, GetNotificationsServiceDetailUrl());
+        public static UriTemplateAction GetNotificationsServiceDetailUriTemplateAction(string label) => new(label, GetNotificationsServiceDetailUrl());
 
         /// <summary>
         /// Opens the "Chats" settings screen.
@@ -528,7 +528,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetSettingsChatSettingsUriTemplateAction(string label) => new UriTemplateAction(label, GetSettingsChatSettingsUrl());
+        public static UriTemplateAction GetSettingsChatSettingsUriTemplateAction(string label) => new(label, GetSettingsChatSettingsUrl());
 
         /// <summary>
         /// Opens the "Display suggestions" settings screen. This screen is in the "Chats" settings screen.
@@ -541,7 +541,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetSuggestSettingsUriTemplateAction(string label) => new UriTemplateAction(label, GetSuggestSettingsUrl());
+        public static UriTemplateAction GetSuggestSettingsUriTemplateAction(string label) => new(label, GetSuggestSettingsUrl());
 
         /// <summary>
         /// Opens the "Calls" settings screen.
@@ -554,7 +554,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetSettingsCallSettingsUriTemplateAction(string label) => new UriTemplateAction(label, GetSettingsCallSettingsUrl());
+        public static UriTemplateAction GetSettingsCallSettingsUriTemplateAction(string label) => new(label, GetSettingsCallSettingsUrl());
 
         /// <summary>
         /// Opens the "Timeline" settings screen.
@@ -567,7 +567,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetSettingsTimelineSettingsUriTemplateAction(string label) => new UriTemplateAction(label, GetSettingsTimelineSettingsUrl());
+        public static UriTemplateAction GetSettingsTimelineSettingsUriTemplateAction(string label) => new(label, GetSettingsTimelineSettingsUrl());
 
         /// <summary>
         /// Opens the "Sticker set info" screen for a specified sticker set.
@@ -587,7 +587,7 @@ namespace LineMessagingAPI
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
         public static UriTemplateAction GetShopStickerDetailUriTemplateAction(string label, string packageId)
-            => new UriTemplateAction(label, GetShopStickerDetailUrl(packageId));
+            => new(label, GetShopStickerDetailUrl(packageId));
 
         /// <summary>
         /// Opens the "RANK" tab for a specified category. 
@@ -605,7 +605,7 @@ namespace LineMessagingAPI
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
         public static UriTemplateAction GetShopCategoryUriTemplateAction(string label, string categoryId)
-            => new UriTemplateAction(label, GetShopCategoryUrl(categoryId));
+            => new(label, GetShopCategoryUrl(categoryId));
 
         /// <summary>
         /// Opens a list of sticker sets from a specified author.
@@ -625,7 +625,7 @@ namespace LineMessagingAPI
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
         public static UriTemplateAction GetShopStickerAuthorUriTemplateAction(string label, string authorId)
-            => new UriTemplateAction(label, GetShopStickerAuthorUrl(authorId));
+            => new(label, GetShopStickerAuthorUrl(authorId));
 
         /// <summary>
         /// Opens the               "HOME" tab in the "Sticker Shop" screen.
@@ -638,7 +638,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetStickerShopUriTemplateAction(string label) => new UriTemplateAction(label, GetStickerShopUrl());
+        public static UriTemplateAction GetStickerShopUriTemplateAction(string label) => new(label, GetStickerShopUrl());
 
         /// <summary>
         /// Opens the "NEW" tab in the "Sticker Shop" screen.Note: Not supported on Android.
@@ -651,7 +651,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetShopStickerNewUriTemplateAction(string label) => new UriTemplateAction(label, GetShopStickerNewUrl());
+        public static UriTemplateAction GetShopStickerNewUriTemplateAction(string label) => new(label, GetShopStickerNewUrl());
 
         /// <summary>
         /// Opens the "RANK" tab in the "Sticker Shop" screen.Note: Not supported on Android.
@@ -664,7 +664,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetShopStikerHotUriTemplateAction(string label) => new UriTemplateAction(label, GetShopStikerHotUrl());
+        public static UriTemplateAction GetShopStikerHotUriTemplateAction(string label) => new(label, GetShopStikerHotUrl());
 
         /// <summary>
         /// Opens the "FREE" tab in the "Sticker Shop" screen.Note: Not supported on Android.
@@ -677,7 +677,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetShopStickerEventUriTemplateAction(string label) => new UriTemplateAction(label, GetShopStickerEventUrl());
+        public static UriTemplateAction GetShopStickerEventUriTemplateAction(string label) => new(label, GetShopStickerEventUrl());
 
         /// <summary>
         /// Opens the "CATEGORIES" tab in the "Sticker Shop" screen.Note: Not supported on Android.
@@ -690,7 +690,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetShopStickerCategoryUriTemplateAction(string label) => new UriTemplateAction(label, GetShopStickerCategoryUrl());
+        public static UriTemplateAction GetShopStickerCategoryUriTemplateAction(string label) => new(label, GetShopStickerCategoryUrl());
 
         /// <summary>
         /// Opens the "LINE Out" dial pad screen with a preset phone number. 
@@ -722,7 +722,7 @@ namespace LineMessagingAPI
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
         public static UriTemplateAction GetCallUriTemplateAction(string label, string countryCallingCode, string phoneNumber)
-            => new UriTemplateAction(label, GetCallUrl(countryCallingCode, phoneNumber));
+            => new(label, GetCallUrl(countryCallingCode, phoneNumber));
 
 
         /// <summary>
@@ -736,7 +736,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetCallsUriTemplateAction(string label) => new UriTemplateAction(label, GetCallsUrl());
+        public static UriTemplateAction GetCallsUriTemplateAction(string label) => new(label, GetCallsUrl());
 
         /// <summary>
         /// Opens the "LINE Out" dial pad screen.
@@ -749,7 +749,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetCallDialpadUriTemplateAction(string label) => new UriTemplateAction(label, GetCallDialpadUrl());
+        public static UriTemplateAction GetCallDialpadUriTemplateAction(string label) => new(label, GetCallDialpadUrl());
 
         /// <summary>
         /// Opens the "LINE Out Settings" screen.
@@ -762,7 +762,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetCallSettingsUriTemplateAction(string label) => new UriTemplateAction(label, GetCallSettingsUrl());
+        public static UriTemplateAction GetCallSettingsUriTemplateAction(string label) => new(label, GetCallSettingsUrl());
 
         /// <summary>
         /// Opens the "Contacts" screen.
@@ -775,7 +775,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetCallContactsUriTemplateAction(string label) => new UriTemplateAction(label, GetCallContactsUrl());
+        public static UriTemplateAction GetCallContactsUriTemplateAction(string label) => new(label, GetCallContactsUrl());
 
         /// <summary>
         /// Opens the "Redeem for LINE Out Credit" screen.
@@ -788,7 +788,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name = "label" > Template action label text</param>
         /// <returns>URI template action object</returns>
-        public static UriTemplateAction GetCallRedeemUriTemplateAction(string label) => new UriTemplateAction(label, GetCallRedeemUrl());
+        public static UriTemplateAction GetCallRedeemUriTemplateAction(string label) => new(label, GetCallRedeemUrl());
 
     }
 }
