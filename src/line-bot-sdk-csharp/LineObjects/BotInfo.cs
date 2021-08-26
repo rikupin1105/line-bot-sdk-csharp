@@ -5,7 +5,7 @@
     /// </summary>
     public class BotInfo
     {
-        public string userID { get; set; }
+        public string UserID { get; set; }
         public string BasicId { get; set; }
         public string PremiumId { get; set; }
         public string DisplayName { get; set; }
