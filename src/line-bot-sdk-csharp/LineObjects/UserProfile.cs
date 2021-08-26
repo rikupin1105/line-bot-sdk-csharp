@@ -19,7 +19,7 @@
         /// <summary>
         /// Language
         /// </summary>
-        public string language { get; set; }
+        public string Language { get; set; }
 
         /// <summary>
         /// Image URL
