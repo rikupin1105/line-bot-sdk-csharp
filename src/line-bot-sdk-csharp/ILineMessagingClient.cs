@@ -20,12 +20,12 @@ namespace LineMessagingAPI
         /// https://developers.line.biz/ja/reference/messaging-api/#send-reply-message
         /// </summary>
         Task ReplyMessageAsync(string replyToken, IList<ISendMessage> messages, bool notificationDisabled = false);
-        Task ReplyTextAsync(string replyToken, string message, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null);
-        Task ReplyStickerAsync(string replyToken, string packageId, string stickerId, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null);
-        Task ReplyImageAsync(string replyToken, string originalContentUrl, string previewImageUrl, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null);
-        Task ReplyVideoAsync(string replyToken, string originalContentUrl, string previewImageUrl, string trackingId, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null);
-        Task ReplyAudioAsync(string replyToken, string originalContentUrl, long duration, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null);
-        Task ReplyLocationAsync(string replyToken, string title, string address, decimal latitude, decimal longitude, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null);
+        Task ReplyTextAsync(string replyToken, string message, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null);
+        Task ReplyStickerAsync(string replyToken, string packageId, string stickerId, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null);
+        Task ReplyImageAsync(string replyToken, string originalContentUrl, string previewImageUrl, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null);
+        Task ReplyVideoAsync(string replyToken, string originalContentUrl, string previewImageUrl, string trackingId, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null);
+        Task ReplyAudioAsync(string replyToken, string originalContentUrl, long duration, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null);
+        Task ReplyLocationAsync(string replyToken, string title, string address, decimal latitude, decimal longitude, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null);
 
         /// <summary>
         /// プッシュメッセージを送る。
@@ -33,12 +33,12 @@ namespace LineMessagingAPI
         /// /// https://developers.line.biz/ja/reference/messaging-api/#send-push-message
         /// </summary>
         Task PushMessageAsync(string to, IList<ISendMessage> messages, bool notificationDisabled = false, string RetryKey = null);
-        Task PushTextAsync(string to, string message, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null);
-        Task PushStickerAsync(string to, string packageId, string stickerId, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null);
-        Task PushImageAsync(string to, string originalContentUrl, string previewImageUrl, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null);
-        Task PushVideoAsync(string to, string originalContentUrl, string previewImageUrl, string trackingId, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null);
-        Task PushAudioAsync(string to, string originalContentUrl, long duration, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null);
-        Task PushLocationAsync(string to, string title, string address, decimal latitude, decimal longitude, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null);
+        Task PushTextAsync(string to, string message, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null);
+        Task PushStickerAsync(string to, string packageId, string stickerId, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null);
+        Task PushImageAsync(string to, string originalContentUrl, string previewImageUrl, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null);
+        Task PushVideoAsync(string to, string originalContentUrl, string previewImageUrl, string trackingId, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null);
+        Task PushAudioAsync(string to, string originalContentUrl, long duration, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null);
+        Task PushLocationAsync(string to, string title, string address, decimal latitude, decimal longitude, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null);
 
         /// <summary>
         /// マルチキャストメッセージを送る。

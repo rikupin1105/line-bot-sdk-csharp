@@ -11,7 +11,7 @@
         /// These properties are used for the quick reply feature
         /// </summary>
         public QuickReply QuickReply { get; set; }
-        public MessageSender Sender { get; set; }
+        public Sender Sender { get; set; }
 
         /// <summary>
         /// Package ID for a set of stickers. For information on package IDs, see the Sticker list.
@@ -35,12 +35,12 @@
         /// <param name="quickReply">
         /// QuickReply
         /// </param>
-        public StickerMessage(string packageId, string stickerId, QuickReply quickReply = null, MessageSender messageSender = null)
+        public StickerMessage(string packageId, string stickerId, QuickReply quickReply = null, Sender sender = null)
         {
             PackageId = packageId;
             StickerId = stickerId;
             QuickReply = quickReply;
-            Sender = messageSender;
+            Sender = sender;
         }
     }
 }

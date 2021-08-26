@@ -15,7 +15,7 @@ namespace LineMessagingAPI
         /// These properties are used for the quick reply feature
         /// </summary>
         public QuickReply QuickReply { get; set; }
-        public MessageSender Sender { get; set; }
+        public Sender Sender { get; set; }
 
         /// <summary>
         /// Base URL of image (Max: 1000 characters)
@@ -71,7 +71,7 @@ namespace LineMessagingAPI
         /// <param name="video">
         /// Video to play on imagemap
         /// </param>
-        public ImagemapMessage(string baseUrl, string altText, ImagemapSize baseSize, IList<IImagemapAction> actions, QuickReply quickReply = null, Video video = null, MessageSender messageSender = null)
+        public ImagemapMessage(string baseUrl, string altText, ImagemapSize baseSize, IList<IImagemapAction> actions, QuickReply quickReply = null, Video video = null, Sender sender = null)
         {
             BaseUrl = baseUrl;
             AltText = altText.Substring(0, Math.Min(altText.Length, 400)); ;
@@ -79,7 +79,7 @@ namespace LineMessagingAPI
             Actions = actions;
             QuickReply = quickReply;
             Video = video;
-            Sender = messageSender;
+            Sender = sender;
         }
     }
 }

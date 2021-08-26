@@ -15,7 +15,7 @@ namespace LineMessagingAPI
         /// </summary>
         public QuickReply QuickReply { get; set; }
 
-        public MessageSender Sender { get; set; }
+        public Sender Sender { get; set; }
 
         /// <summary>
         /// Message text
@@ -35,11 +35,11 @@ namespace LineMessagingAPI
         /// <param name="quickReply">
         /// QuickReply
         /// </param>
-        public TextMessage(string text, QuickReply quickReply = null, MessageSender messageSender=null)
+        public TextMessage(string text, QuickReply quickReply = null, Sender sender = null)
         {
             Text = text.Substring(0, Math.Min(text.Length, 5000));
             QuickReply = quickReply;
-            Sender = messageSender;
+            Sender = sender;
         }
     }
 }

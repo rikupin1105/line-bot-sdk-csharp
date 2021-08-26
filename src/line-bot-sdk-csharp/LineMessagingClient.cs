@@ -120,29 +120,29 @@ namespace LineMessagingAPI
             var response = await _client.SendAsync(request).ConfigureAwait(false);
             await response.EnsureSuccessStatusCodeAsync().ConfigureAwait(false);
         }
-        public virtual Task ReplyTextAsync(string replyToken, string message, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null)
+        public virtual Task ReplyTextAsync(string replyToken, string message, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null)
         {
-            return ReplyMessageAsync(replyToken, new ISendMessage[] { new TextMessage(message, quickReply, messageSender) }, notificationDisabled);
+            return ReplyMessageAsync(replyToken, new ISendMessage[] { new TextMessage(message, quickReply, sender) }, notificationDisabled);
         }
-        public virtual Task ReplyStickerAsync(string replyToken, string packageId, string stickerId, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null)
+        public virtual Task ReplyStickerAsync(string replyToken, string packageId, string stickerId, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null)
         {
-            return ReplyMessageAsync(replyToken, new ISendMessage[] { new StickerMessage(packageId, stickerId, quickReply, messageSender) }, notificationDisabled);
+            return ReplyMessageAsync(replyToken, new ISendMessage[] { new StickerMessage(packageId, stickerId, quickReply, sender) }, notificationDisabled);
         }
-        public virtual Task ReplyImageAsync(string replyToken, string originalContentUrl, string previewImageUrl, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null)
+        public virtual Task ReplyImageAsync(string replyToken, string originalContentUrl, string previewImageUrl, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null)
         {
-            return ReplyMessageAsync(replyToken, new ISendMessage[] { new ImageMessage(originalContentUrl, previewImageUrl, quickReply, messageSender) }, notificationDisabled);
+            return ReplyMessageAsync(replyToken, new ISendMessage[] { new ImageMessage(originalContentUrl, previewImageUrl, quickReply, sender) }, notificationDisabled);
         }
-        public virtual Task ReplyVideoAsync(string replyToken, string originalContentUrl, string previewImageUrl, string trackingId, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null)
+        public virtual Task ReplyVideoAsync(string replyToken, string originalContentUrl, string previewImageUrl, string trackingId, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null)
         {
-            return ReplyMessageAsync(replyToken, new ISendMessage[] { new VideoMessage(originalContentUrl, previewImageUrl, trackingId, quickReply, messageSender) }, notificationDisabled);
+            return ReplyMessageAsync(replyToken, new ISendMessage[] { new VideoMessage(originalContentUrl, previewImageUrl, trackingId, quickReply, sender) }, notificationDisabled);
         }
-        public virtual Task ReplyAudioAsync(string replyToken, string originalContentUrl, long duration, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null)
+        public virtual Task ReplyAudioAsync(string replyToken, string originalContentUrl, long duration, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null)
         {
-            return ReplyMessageAsync(replyToken, new ISendMessage[] { new AudioMessage(originalContentUrl, duration, quickReply, messageSender) }, notificationDisabled);
+            return ReplyMessageAsync(replyToken, new ISendMessage[] { new AudioMessage(originalContentUrl, duration, quickReply, sender) }, notificationDisabled);
         }
-        public virtual Task ReplyLocationAsync(string replyToken, string title, string address, decimal latitude, decimal longitude, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null)
+        public virtual Task ReplyLocationAsync(string replyToken, string title, string address, decimal latitude, decimal longitude, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null)
         {
-            return ReplyMessageAsync(replyToken, new ISendMessage[] { new LocationMessage(title, address, latitude, longitude, quickReply, messageSender) }, notificationDisabled);
+            return ReplyMessageAsync(replyToken, new ISendMessage[] { new LocationMessage(title, address, latitude, longitude, quickReply, sender) }, notificationDisabled);
         }
 
 
@@ -166,29 +166,29 @@ namespace LineMessagingAPI
             var response = await _client.SendAsync(request).ConfigureAwait(false);
             await response.EnsureSuccessStatusCodeAsync().ConfigureAwait(false);
         }
-        public virtual Task PushTextAsync(string to, string message, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null)
+        public virtual Task PushTextAsync(string to, string message, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null)
         {
-            return PushMessageAsync(to, new ISendMessage[] { new TextMessage(message, quickReply, messageSender) }, notificationDisabled, RetryKey);
+            return PushMessageAsync(to, new ISendMessage[] { new TextMessage(message, quickReply, sender) }, notificationDisabled, RetryKey);
         }
-        public virtual Task PushStickerAsync(string to, string packageId, string stickerId, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null)
+        public virtual Task PushStickerAsync(string to, string packageId, string stickerId, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null)
         {
-            return PushMessageAsync(to, new ISendMessage[] { new StickerMessage(packageId, stickerId, quickReply, messageSender) }, notificationDisabled, RetryKey);
+            return PushMessageAsync(to, new ISendMessage[] { new StickerMessage(packageId, stickerId, quickReply, sender) }, notificationDisabled, RetryKey);
         }
-        public virtual Task PushImageAsync(string to, string originalContentUrl, string previewImageUrl, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null)
+        public virtual Task PushImageAsync(string to, string originalContentUrl, string previewImageUrl, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null)
         {
-            return PushMessageAsync(to, new ISendMessage[] { new ImageMessage(originalContentUrl, previewImageUrl, quickReply, messageSender) }, notificationDisabled, RetryKey);
+            return PushMessageAsync(to, new ISendMessage[] { new ImageMessage(originalContentUrl, previewImageUrl, quickReply, sender) }, notificationDisabled, RetryKey);
         }
-        public virtual Task PushVideoAsync(string to, string originalContentUrl, string previewImageUrl, string trackingId, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null)
+        public virtual Task PushVideoAsync(string to, string originalContentUrl, string previewImageUrl, string trackingId, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null)
         {
-            return PushMessageAsync(to, new ISendMessage[] { new VideoMessage(originalContentUrl, previewImageUrl, trackingId, quickReply, messageSender) }, notificationDisabled, RetryKey);
+            return PushMessageAsync(to, new ISendMessage[] { new VideoMessage(originalContentUrl, previewImageUrl, trackingId, quickReply, sender) }, notificationDisabled, RetryKey);
         }
-        public virtual Task PushAudioAsync(string to, string originalContentUrl, long duration, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null)
+        public virtual Task PushAudioAsync(string to, string originalContentUrl, long duration, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null)
         {
-            return PushMessageAsync(to, new ISendMessage[] { new AudioMessage(originalContentUrl, duration, quickReply, messageSender) }, notificationDisabled, RetryKey);
+            return PushMessageAsync(to, new ISendMessage[] { new AudioMessage(originalContentUrl, duration, quickReply, sender) }, notificationDisabled, RetryKey);
         }
-        public virtual Task PushLocationAsync(string to, string title, string address, decimal latitude, decimal longitude, bool notificationDisabled = false, QuickReply quickReply = null, MessageSender messageSender = null, string RetryKey = null)
+        public virtual Task PushLocationAsync(string to, string title, string address, decimal latitude, decimal longitude, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null)
         {
-            return PushMessageAsync(to, new ISendMessage[] { new LocationMessage(title, address, latitude, longitude, quickReply, messageSender) }, notificationDisabled, RetryKey);
+            return PushMessageAsync(to, new ISendMessage[] { new LocationMessage(title, address, latitude, longitude, quickReply, sender) }, notificationDisabled, RetryKey);
         }
 
         /// <summary>

@@ -14,7 +14,7 @@ namespace LineMessagingAPI
         /// These properties are used for the quick reply feature
         /// </summary>
         public QuickReply QuickReply { get; set; }
-        public MessageSender Sender { get; set; }
+        public Sender Sender { get; set; }
 
         /// <summary>
         /// Title
@@ -58,14 +58,14 @@ namespace LineMessagingAPI
         /// <param name="quickReply">
         /// QuickReply
         /// </param>
-        public LocationMessage(string title, string address, decimal latitude, decimal longitude, QuickReply quickReply = null, MessageSender messageSender = null)
+        public LocationMessage(string title, string address, decimal latitude, decimal longitude, QuickReply quickReply = null, Sender sender = null)
         {
             Title = title.Substring(0, Math.Min(title.Length, 100));
             Address = address.Substring(0, Math.Min(address.Length, 100));
             Latitude = latitude;
             Longitude = longitude;
             QuickReply = quickReply;
-            Sender = messageSender;
+            Sender = sender;
         }
     }
 }

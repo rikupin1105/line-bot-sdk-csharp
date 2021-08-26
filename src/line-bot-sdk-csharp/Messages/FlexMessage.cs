@@ -7,14 +7,14 @@ namespace LineMessagingAPI
         public MessageType Type { get; } = MessageType.Flex;
         public QuickReply QuickReply { get; set; }
         public IFlexContainer Contents { get; set; }
-        public MessageSender Sender { get; set; }
+        public Sender Sender { get; set; }
         public string AltText { get; set; }
-        public FlexMessage(string altText, IFlexContainer contents, QuickReply quickReply = null, MessageSender messageSender = null)
+        public FlexMessage(string altText, IFlexContainer contents, QuickReply quickReply = null, Sender sender = null)
         {
             QuickReply = quickReply;
             AltText = altText.Substring(0, Math.Min(altText.Length, 400));
             Contents = contents;
-            Sender = messageSender;
+            Sender = sender;
         }
 
         public static BubbleContainerFlexMessage CreateBubbleMessage(string altText, IFlexContainer contents)

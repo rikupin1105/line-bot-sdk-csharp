@@ -14,7 +14,7 @@ namespace LineMessagingAPI
         /// These properties are used for the quick reply feature
         /// </summary>
         public QuickReply QuickReply { get; set; }
-        public MessageSender Sender { get; set; }
+        public Sender Sender { get; set; }
 
 
         /// <summary>
@@ -41,12 +41,12 @@ namespace LineMessagingAPI
         /// <param name="quickReply">
         /// QuickRepy
         /// </param>
-        public TemplateMessage(string altText, ITemplate template, QuickReply quickReply = null, MessageSender messageSender = null)
+        public TemplateMessage(string altText, ITemplate template, QuickReply quickReply = null, Sender sender = null)
         {
             AltText = altText.Substring(0, Math.Min(altText.Length, 400));
             Template = template;
             QuickReply = quickReply;
-            Sender = messageSender;
+            Sender = sender;
         }
     }
 }

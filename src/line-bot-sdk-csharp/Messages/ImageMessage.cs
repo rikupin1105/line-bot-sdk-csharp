@@ -12,7 +12,7 @@
         /// These properties are used for the quick reply feature
         /// </summary>
         public QuickReply QuickReply { get; set; }
-        public MessageSender Sender { get; set; }
+        public Sender Sender { get; set; }
 
         /// <summary>
         /// Image URL (Max: 1000 characters)
@@ -52,12 +52,12 @@
         /// <param name="quickReply">
         /// QuickReply
         /// </param>
-        public ImageMessage(string originalContentUrl, string previerImageUrl, QuickReply quickReply = null, MessageSender messageSender = null)
+        public ImageMessage(string originalContentUrl, string previerImageUrl, QuickReply quickReply = null, Sender sender = null)
         {
             OriginalContentUrl = originalContentUrl;
             PreviewImageUrl = previerImageUrl;
             QuickReply = quickReply;
-            Sender = messageSender;
+            Sender = sender;
         }
     }
 }
