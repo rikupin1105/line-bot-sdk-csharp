@@ -94,11 +94,9 @@ namespace LineMessagingAPI
         {
             if (string.IsNullOrEmpty(channelId)) { throw new ArgumentNullException(nameof(channelId)); }
             if (string.IsNullOrEmpty(channelSecret)) { throw new ArgumentNullException(nameof(channelSecret)); }
-            using (var client = new HttpClient())
-            {
-                var accessToken = await IssueChannelAccessTokenAsync(client, channelId, channelSecret, uri);
-                return new LineMessagingClient(accessToken.AccessToken, uri);
-            }
+            using var client = new HttpClient();
+            var accessToken = await IssueChannelAccessTokenAsync(client, channelId, channelSecret, uri);
+            return new LineMessagingClient(accessToken.AccessToken, uri);
         }
 
         #endregion
