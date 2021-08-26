@@ -17,7 +17,5 @@ namespace LineMessagingAPI
             self.Contents.Add(component);
             return self;
         }
-
-
     }
 }
