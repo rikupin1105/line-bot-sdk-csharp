@@ -118,9 +118,9 @@ namespace LineMessagingAPI
             var response = await _client.SendAsync(request).ConfigureAwait(false);
             await response.EnsureSuccessStatusCodeAsync().ConfigureAwait(false);
         }
-        public virtual Task ReplyTextAsync(string replyToken, string message, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null)
+        public virtual Task ReplyTextAsync(string replyToken, string message, Emoji[] emojis, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null)
         {
-            return ReplyMessageAsync(replyToken, new ISendMessage[] { new TextMessage(message, quickReply, sender) }, notificationDisabled);
+            return ReplyMessageAsync(replyToken, new ISendMessage[] { new TextMessage(message, emojis, quickReply, sender) }, notificationDisabled);
         }
         public virtual Task ReplyStickerAsync(string replyToken, string packageId, string stickerId, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null)
         {
@@ -164,9 +164,9 @@ namespace LineMessagingAPI
             var response = await _client.SendAsync(request).ConfigureAwait(false);
             await response.EnsureSuccessStatusCodeAsync().ConfigureAwait(false);
         }
-        public virtual Task PushTextAsync(string to, string message, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null)
+        public virtual Task PushTextAsync(string to, string message, Emoji[] emojis, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null)
         {
-            return PushMessageAsync(to, new ISendMessage[] { new TextMessage(message, quickReply, sender) }, notificationDisabled, RetryKey);
+            return PushMessageAsync(to, new ISendMessage[] { new TextMessage(message, emojis, quickReply, sender) }, notificationDisabled, RetryKey);
         }
         public virtual Task PushStickerAsync(string to, string packageId, string stickerId, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null)
         {
