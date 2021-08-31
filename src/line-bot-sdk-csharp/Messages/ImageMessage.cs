@@ -2,52 +2,43 @@
 {
     /// <summary>
     /// Image
-    /// https://developers.line.me/en/docs/messaging-api/reference/#image
+    /// https://developers.line.me/ja/reference/messaging-api/#image-message
+    /// https://developers.line.me/en/reference/messaging-api/#image-message
     /// </summary>
     public class ImageMessage : ISendMessage
     {
-        public MessageType Type { get; } = MessageType.Image;
-
         /// <summary>
-        /// These properties are used for the quick reply feature
+        /// Image
         /// </summary>
+        public MessageType Type { get; } = MessageType.Image;
         public QuickReply QuickReply { get; set; }
         public Sender Sender { get; set; }
 
         /// <summary>
         /// Image URL (Max: 2000 characters)
-        /// HTTPS
-        /// JPEG PNG
-        /// Max: 10 MB
+        /// HTTPS over TLS 1.2 or later
+        /// JPEG or PNG
+        /// Max image size: No limits
+        /// Max file size: 10 MB
         /// </summary>
         public string OriginalContentUrl { get; }
 
         /// <summary>
         /// Preview image URL (Max: 2000 characters)
-        /// HTTPS
-        /// JPEG
-        /// Max: 1 MB
+        /// HTTPS over TLS 1.2 or later
+        /// JPEG or PNG
+        /// Max image size: No limits
+        /// Max file size: 1 MB
         /// </summary>
         public string PreviewImageUrl { get; }
 
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="originalContentUrl">
-        /// Image URL (Max: 2000 characters)
-        /// HTTPS
-        /// JPEG PNG
-        /// Max: 10 MB
-        /// </param>
-        /// <param name="previerImageUrl">
-        /// Preview image URL (Max: 2000 characters)
-        /// HTTPS
-        /// JPEG PNG
-        /// Max: 1 MB
-        /// </param>
-        /// <param name="quickReply">
-        /// QuickReply
-        /// </param>
+        /// <param name="originalContentUrl"></param>
+        /// <param name="previerImageUrl"></param>
+        /// <param name="quickReply"></param>
+        /// <param name="sender"></param>
         public ImageMessage(string originalContentUrl, string previerImageUrl, QuickReply quickReply = null, Sender sender = null)
         {
             OriginalContentUrl = originalContentUrl;
