@@ -4,7 +4,7 @@
     /// Defines the size of a tappable area. The top left is used as the origin of the area.
     /// https://developers.line.me/en/refelence/messaging-api/#imagemap-area-object
     /// </summary>
-    public class Area
+    public class ImagemapArea
     {
         /// <summary>
         /// Horizontal position relative to the top-left corner of the area.
@@ -30,7 +30,7 @@
         /// <param name="y"></param>
         /// <param name="width"></param>
         /// <param name="height"></param>
-        public Area(int x, int y, int width, int height)
+        public ImagemapArea(int x, int y, int width, int height)
         {
             X = x;
             Y = y;
