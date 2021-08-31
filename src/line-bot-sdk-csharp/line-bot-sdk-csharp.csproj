@@ -6,7 +6,7 @@
 
     <!-- NuGet -->
     <PackageId>line-bot-sdk-csharp</PackageId>
-    <Version>2.0.0</Version>
+    <Version>2.1.0-bate</Version>
     <Description>LINE Messaging API SDK for C#</Description>
     <Authors>rikupin1105</Authors>
     <RepositoryUrl>https://github.com/rikupin1105/line-bot-sdk-csharp</RepositoryUrl>
