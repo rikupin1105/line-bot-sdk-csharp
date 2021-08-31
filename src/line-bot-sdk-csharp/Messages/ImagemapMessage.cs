@@ -4,28 +4,26 @@ using System.Collections.Generic;
 namespace LineMessagingAPI
 {
     /// <summary>
-    /// Imagemaps are images with one or more links. You can assign one link for the entire image or multiple links which correspond to different regions of the image.
-    /// https://developers.line.me/en/docs/messaging-api/reference/#imagemap-message
+    /// https://developers.line.biz/ja/reference/messaging-api/#imagemap-message
+    /// https://developers.line.biz/en/reference/messaging-api/#imagemap-message
     /// </summary>
     public class ImagemapMessage : ISendMessage
     {
-        public MessageType Type { get; } = MessageType.Imagemap;
-
         /// <summary>
-        /// These properties are used for the quick reply feature
+        /// Imagemap
         /// </summary>
+        public MessageType Type { get; } = MessageType.Imagemap;
         public QuickReply QuickReply { get; set; }
         public Sender Sender { get; set; }
 
         /// <summary>
         /// Base URL of image (Max: 2000 characters)
-        /// HTTPS
+        /// HTTPS over TLS 1.2 or later
         /// </summary>
         public string BaseUrl { get; }
 
         /// <summary>
-        /// Alternative text
-        /// Max: 400 characters
+        /// Alternative text (Max: 400 characters)
         /// </summary>
         public string AltText { get; }
 
@@ -33,7 +31,7 @@ namespace LineMessagingAPI
         /// Width of base image (set to 1040px）
         /// Height of base image（set to the height that corresponds to a width of 1040px）
         /// </summary>
-        public ImagemapSize BaseSize { get; }
+        public BaseSize BaseSize { get; }
 
         /// <summary>
         /// Video to play on imagemap
@@ -49,32 +47,17 @@ namespace LineMessagingAPI
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="baseUrl">
-        /// Base URL of image (Max: 2000 characters)
-        /// HTTPS
-        /// </param>
-        /// <param name="altText">
-        /// Alternative text
-        /// Max: 400 characters
-        /// </param>
-        /// <param name="baseSize">
-        /// Width of base image (set to 1040px）
-        /// Height of base image（set to the height that corresponds to a width of 1040px）
-        /// </param>
-        /// <param name="actions">
-        /// Action when tapped.
-        /// Max: 50
-        /// </param>
-        /// <param name="quickReply">
-        /// QuickReply
-        /// </param>
-        /// <param name="video">
-        /// Video to play on imagemap
-        /// </param>
-        public ImagemapMessage(string baseUrl, string altText, ImagemapSize baseSize, IList<IImagemapAction> actions, QuickReply quickReply = null, Video video = null, Sender sender = null)
+        /// <param name="baseUrl"></param>
+        /// <param name="altText"></param>
+        /// <param name="baseSize"></param>
+        /// <param name="actions"></param>
+        /// <param name="quickReply"></param>
+        /// <param name="video"></param>
+        /// <param name="sender"></param>
+        public ImagemapMessage(string baseUrl, string altText, BaseSize baseSize, IList<IImagemapAction> actions, QuickReply quickReply = null, Video video = null, Sender sender = null)
         {
-            BaseUrl = baseUrl;
-            AltText = altText.Substring(0, Math.Min(altText.Length, 400)); ;
+            BaseUrl = baseUrl.Substring(0, Math.Min(altText.Length, 2000));
+            AltText = altText.Substring(0, Math.Min(altText.Length, 400));
             BaseSize = baseSize;
             Actions = actions;
             QuickReply = quickReply;
