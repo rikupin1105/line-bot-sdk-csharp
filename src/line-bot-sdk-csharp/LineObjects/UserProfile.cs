@@ -1,8 +1,8 @@
 ﻿namespace LineMessagingAPI
 {
     /// <summary>
-    /// Response from Get User Profile API. 
-    /// https://developers.line.me/en/docs/messaging-api/reference/#get-profile
+    /// https://developers.line.biz/ja/reference/messaging-api/#get-profile
+    /// https://developers.line.biz/en/reference/messaging-api/#get-profile
     /// </summary>
     public class UserProfile
     {
@@ -17,17 +17,17 @@
         public string UserId { get; set; }
 
         /// <summary>
-        /// Language
+        /// User's language, as a BCP 47 (opens new window)language tag. Example: en for English. The language property is returned only in the following situations:
         /// </summary>
         public string Language { get; set; }
 
         /// <summary>
-        /// Image URL
+        /// Profile image URL. "https" image URL. Not included in the response if the user doesn't have a profile image.
         /// </summary>
         public string PictureUrl { get; set; }
 
         /// <summary>
-        /// Status message
+        /// User's status message. Not included in the response if the user doesn't have a status message.
         /// </summary>
         public string StatusMessage { get; set; }
     }
