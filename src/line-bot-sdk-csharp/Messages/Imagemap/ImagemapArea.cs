@@ -2,9 +2,9 @@
 {
     /// <summary>
     /// Defines the size of a tappable area. The top left is used as the origin of the area.
-    /// https://developers.line.me/en/docs/messaging-api/reference/#imagemap-area-object
+    /// https://developers.line.me/en/refelence/messaging-api/#imagemap-area-object
     /// </summary>
-    public class ImagemapArea
+    public class Area
     {
         /// <summary>
         /// Horizontal position relative to the top-left corner of the area.
@@ -26,19 +26,11 @@
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="x">
-        /// Horizontal position relative to the top-left corner of the area.
-        /// </param>
-        /// <param name="y">
-        /// Vertical position relative to the top-left corner of the area.
-        /// </param>
-        /// <param name="width">
-        /// Width of the tappable area
-        /// </param>
-        /// <param name="height">
-        /// Height of the tappable area
-        /// </param>
-        public ImagemapArea(int x, int y, int width, int height)
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        public Area(int x, int y, int width, int height)
         {
             X = x;
             Y = y;
