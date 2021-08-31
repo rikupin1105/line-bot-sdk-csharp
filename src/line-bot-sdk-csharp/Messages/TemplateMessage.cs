@@ -3,19 +3,17 @@
 namespace LineMessagingAPI
 {
     /// <summary>
-    /// Template messages are messages with predefined layouts which you can customize. There are four types of templates available that can be used to interact with users through your bot.
+    /// https://developers.line.biz/ja/reference/messaging-api/#template-messages
+    /// https://developers.line.biz/en/reference/messaging-api/#template-messages
     /// </summary>
     public class TemplateMessage : ISendMessage
     {
-        public MessageType Type { get; } = MessageType.Template;
-
-
         /// <summary>
-        /// These properties are used for the quick reply feature
+        /// Template
         /// </summary>
+        public MessageType Type { get; } = MessageType.Template;
         public QuickReply QuickReply { get; set; }
         public Sender Sender { get; set; }
-
 
         /// <summary>
         /// A Buttons, Confirm, Carousel, or Image Carousel object.
@@ -23,24 +21,17 @@ namespace LineMessagingAPI
         public ITemplate Template { get; }
 
         /// <summary>
-        /// Alternative text.
-        /// Max: 400 characters
+        /// Alternative text. (Max: 400 characters)
         /// </summary>
         public string AltText { get; }
 
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="altText">
-        /// Alternative text.
-        /// Max: 400 characters
-        ///</param>
-        /// <param name="template">
-        /// A Buttons, Confirm, Carousel, or Image Carousel object.
-        /// </param>
-        /// <param name="quickReply">
-        /// QuickRepy
-        /// </param>
+        /// <param name="altText"></param>
+        /// <param name="template"></param>
+        /// <param name="quickReply"></param>
+        /// <param name="sender"></param>
         public TemplateMessage(string altText, ITemplate template, QuickReply quickReply = null, Sender sender = null)
         {
             AltText = altText.Substring(0, Math.Min(altText.Length, 400));
