@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace LineMessagingAPI
+﻿namespace LineMessagingAPI
 {
     /// <summary>
     /// Rich menu  Area
@@ -44,6 +42,12 @@ namespace LineMessagingAPI
                     return PostbackTemplateAction.CreateFrom(dynamicObject);
                 case TemplateActionType.Datetimepicker:
                     return DateTimePickerTemplateAction.CreateFrom(dynamicObject);
+                case TemplateActionType.Camera:
+                    return CameraTemplateAction.CreateFrom(dynamicObject);
+                case TemplateActionType.CameraRoll:
+                    return CameraRollTemplateAction.CreateFrom(dynamicObject);
+                case TemplateActionType.Location:
+                    return LocationTemplateAction.CreateFrom(dynamicObject);
                 default:
                     return null;
             }
