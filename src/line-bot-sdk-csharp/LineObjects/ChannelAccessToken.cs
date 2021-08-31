@@ -1,16 +1,14 @@
-﻿using System.Collections.Generic;
-
-namespace LineMessagingAPI
+﻿namespace LineMessagingAPI
 {
     /// <summary>
-    /// Short-lived channel access token that is valid for 30 days. 
-    /// https://developers.line.me/en/docs/messaging-api/reference/#issue-channel-access-token
+    /// https://developers.line.biz/ja/reference/messaging-api/#issue-shortlived-channel-access-token
+    /// https://developers.line.biz/en/reference/messaging-api/#issue-shortlived-channel-access-token
     /// </summary>
     public class ChannelAccessToken
     {
         /// <summary>
         /// Short-lived channel access token. Valid for 30 days.
-        /// Note: Channel access tokens cannot be refreshed
+        /// Note: Channel access tokens cannot be refreshed.
         /// </summary>
         public string AccessToken { get; set; }
 
