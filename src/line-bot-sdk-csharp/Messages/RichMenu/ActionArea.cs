@@ -4,14 +4,14 @@ namespace LineMessagingAPI
 {
     /// <summary>
     /// Rich menu  Area
-    /// https://developers.line.me/en/docs/messaging-api/reference/#area-object
+    /// https://developers.line.me/en/refelence/messaging-api/#area-object
     /// </summary>
     public class ActionArea
     {
         /// <summary>
         /// Object describing the boundaries of the area in pixels. See bounds object.
         /// </summary>
-        public ImagemapArea Bounds { get; set; }
+        public ActionBounds Bounds { get; set; }
 
         /// <summary>
         /// Action performed when the area is tapped. See action objects. Note: The label field is not supported for actions in rich menus.
@@ -22,7 +22,7 @@ namespace LineMessagingAPI
         {
             return new ActionArea()
             {
-                Bounds = new ImagemapArea(
+                Bounds = new ActionBounds(
                     (int)(dynamicObject?.bounds?.x ?? 0),
                     (int)(dynamicObject?.bounds?.y ?? 0),
                     (int)(dynamicObject?.bounds?.width ?? 0),
