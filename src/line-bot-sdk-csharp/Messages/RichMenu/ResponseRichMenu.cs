@@ -17,12 +17,8 @@ namespace LineMessagingAPI
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="richMenuId">
-        /// Rich menu ID
-        /// </param>
-        /// <param name="source">
-        /// Rich menu object
-        /// </param>
+        /// <param name="richMenuId"></param>
+        /// <param name="source"></param>
         public ResponseRichMenu(string richMenuId, RichMenu source)
         {
             RichMenuId = richMenuId;
@@ -45,7 +41,7 @@ namespace LineMessagingAPI
             var menu = new RichMenu()
             {
                 Name = (string)dynamicObject?.name,
-                Size = new ImagemapSize((int)(dynamicObject?.size?.width ?? 0), (int)(dynamicObject?.size?.height ?? 0)),
+                Size = new ActionSize((int)(dynamicObject?.size?.width ?? 0), (int)(dynamicObject?.size?.height ?? 0)),
                 Selected = (bool)(dynamicObject?.selected ?? false),
                 ChatBarText = (string)dynamicObject?.chatBarText,
                 Areas = areas
