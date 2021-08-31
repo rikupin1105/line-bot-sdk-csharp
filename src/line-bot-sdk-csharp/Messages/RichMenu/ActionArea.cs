@@ -32,25 +32,17 @@
         public static ITemplateAction ParseTemplateAction(dynamic dynamicObject)
         {
             var type = (TemplateActionType)System.Enum.Parse(typeof(TemplateActionType), (string)dynamicObject?.type, true);
-            switch (type)
+            return type switch
             {
-                case TemplateActionType.Message:
-                    return MessageTemplateAction.CreateFrom(dynamicObject);
-                case TemplateActionType.Uri:
-                    return UriTemplateAction.CreateFrom(dynamicObject);
-                case TemplateActionType.Postback:
-                    return PostbackTemplateAction.CreateFrom(dynamicObject);
-                case TemplateActionType.Datetimepicker:
-                    return DateTimePickerTemplateAction.CreateFrom(dynamicObject);
-                case TemplateActionType.Camera:
-                    return CameraTemplateAction.CreateFrom(dynamicObject);
-                case TemplateActionType.CameraRoll:
-                    return CameraRollTemplateAction.CreateFrom(dynamicObject);
-                case TemplateActionType.Location:
-                    return LocationTemplateAction.CreateFrom(dynamicObject);
-                default:
-                    return null;
-            }
+                TemplateActionType.Message => MessageTemplateAction.CreateFrom(dynamicObject),
+                TemplateActionType.Uri => UriTemplateAction.CreateFrom(dynamicObject),
+                TemplateActionType.Postback => PostbackTemplateAction.CreateFrom(dynamicObject),
+                TemplateActionType.Datetimepicker => DateTimePickerTemplateAction.CreateFrom(dynamicObject),
+                TemplateActionType.Camera => CameraTemplateAction.CreateFrom(dynamicObject),
+                TemplateActionType.CameraRoll => CameraRollTemplateAction.CreateFrom(dynamicObject),
+                TemplateActionType.Location => LocationTemplateAction.CreateFrom(dynamicObject),
+                _ => null,
+            };
         }
     }
 }
