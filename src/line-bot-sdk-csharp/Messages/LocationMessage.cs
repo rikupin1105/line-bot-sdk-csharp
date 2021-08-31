@@ -3,28 +3,25 @@
 namespace LineMessagingAPI
 {
     /// <summary>
-    /// Location
-    /// https://developers.line.me/en/docs/messaging-api/reference/#location
+    /// https://developers.line.biz/ja/reference/messaging-api/#location-message
+    /// https://developers.line.biz/en/reference/messaging-api/#location-message
     /// </summary>
     public class LocationMessage : ISendMessage
     {
-        public MessageType Type { get; } = MessageType.Location;
-
         /// <summary>
-        /// These properties are used for the quick reply feature
+        /// Location
         /// </summary>
+        public MessageType Type { get; } = MessageType.Location;
         public QuickReply QuickReply { get; set; }
         public Sender Sender { get; set; }
 
         /// <summary>
-        /// Title
-        /// Max: 100 characters
+        /// Title (Max: 100 characters)
         /// </summary>
         public string Title { get; }
 
         /// <summary>
-        /// Address
-        /// Max: 100 characters
+        /// Address (Max: 100 characters)
         /// </summary>
         public string Address { get; }
 
@@ -41,23 +38,12 @@ namespace LineMessagingAPI
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="title">
-        /// Title
-        /// Max: 100 characters
-        /// </param>
-        /// <param name="address">
-        /// Address
-        /// Max: 100 characters
-        /// </param>
-        /// <param name="latitude">
-        /// Latitude
-        /// </param>
-        /// <param name="longitude">
-        /// Longitude
-        /// </param>
-        /// <param name="quickReply">
-        /// QuickReply
-        /// </param>
+        /// <param name="title"></param>
+        /// <param name="address"></param>
+        /// <param name="latitude"></param>
+        /// <param name="longitude"></param>
+        /// <param name="quickReply"></param>
+        /// <param name="sender"></param>
         public LocationMessage(string title, string address, decimal latitude, decimal longitude, QuickReply quickReply = null, Sender sender = null)
         {
             Title = title.Substring(0, Math.Min(title.Length, 100));
