@@ -1,7 +1,8 @@
 ﻿namespace LineMessagingAPI
 {
     /// <summary>
-    /// Response from Get group member user IDs API
+    /// https://developers.line.biz/ja/reference/messaging-api/#get-group-summary
+    /// https://developers.line.biz/en/reference/messaging-api/#get-group-summary
     /// </summary>
     public class GroupSummary
     {
