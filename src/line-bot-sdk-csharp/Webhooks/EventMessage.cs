@@ -44,7 +44,6 @@ namespace LineMessagingAPI.Webhooks
                         {
                             var emoji = new Emoji(
                                 (int)message.emojis[i]?.index,
-                                (int)message.emojis[i]?.length,
                                 (string)message.emojis[i]?.productId,
                                 (string)message.emojis[i]?.emojiId);
                             emojis_list.Add(emoji);
