@@ -36,7 +36,7 @@ namespace LineMessagingAPI
         /// <summary>
         /// Video to play on imagemap
         /// </summary>
-        public Video Video { get; }
+        public ImagemapVideo Video { get; }
 
         /// <summary>
         /// Action when tapped.
@@ -54,7 +54,7 @@ namespace LineMessagingAPI
         /// <param name="quickReply"></param>
         /// <param name="video"></param>
         /// <param name="sender"></param>
-        public ImagemapMessage(string baseUrl, string altText, BaseSize baseSize, IList<IImagemapAction> actions, QuickReply quickReply = null, Video video = null, Sender sender = null)
+        public ImagemapMessage(string baseUrl, string altText, BaseSize baseSize, IList<IImagemapAction> actions, ImagemapVideo video = null, QuickReply quickReply = null, Sender sender = null)
         {
             BaseUrl = baseUrl.Substring(0, Math.Min(altText.Length, 2000));
             AltText = altText.Substring(0, Math.Min(altText.Length, 400));
