@@ -32,19 +32,9 @@ namespace LineMessagingAPI
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="area">
-        /// Defined tappable area
-        /// </param>
-        /// <param name="linkUri">
-        /// Label for the action. Spoken when the accessibility feature is enabled on the client device. 
-        /// Max: 50 characters
-        /// Supported on LINE iOS version 8.2.0 and later.
-        /// </param>
-        /// <param name="label">
-        /// Label for the action. Spoken when the accessibility feature is enabled on the client device. 
-        /// Max: 50 characters
-        /// Supported on LINE iOS version 8.2.0 and later.
-        /// </param>
+        /// <param name="area"></param>
+        /// <param name="linkUri"></param>
+        /// <param name="label"></param>
         public UriImagemapAction(ImagemapArea area, string linkUri, string label = null)
         {
             Area = area;
