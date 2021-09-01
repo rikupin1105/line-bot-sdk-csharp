@@ -460,7 +460,7 @@ $@"{{
         /// </summary>
         /// <param name="groupId">Identifier of the group</param>
         /// <param name="continuationToken">ContinuationToken</param>
-        public virtual async Task<GroupMemberIds> GetGroupMemberIdsAsync(string groupId, string continuationToken)
+        public virtual async Task<GroupMemberIds> GetGroupMemberIdsAsync(string groupId, string continuationToken = null)
         {
             var requestUrl = $"{_uri}/bot/group/{groupId}/members/ids";
             if (continuationToken != null)
