@@ -418,8 +418,7 @@ $@"{{
         /// Get information about the bot.
         /// https://developers.line.biz/ja/reference/messaging-api/#get-bot-info
         /// </summary>
-        /// <param name="groupId"></param>
-        public virtual async Task<BotInfo> GetBotInfo(string groupId)
+        public virtual async Task<BotInfo> GetBotInfo()
         {
             var content = await GetStringAsync($"{_uri}/bot/info").ConfigureAwait(false);
             return JsonConvert.DeserializeObject<BotInfo>(content);

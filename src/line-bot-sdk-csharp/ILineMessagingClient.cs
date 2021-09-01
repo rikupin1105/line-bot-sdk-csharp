@@ -179,8 +179,7 @@ namespace LineMessagingAPI
         /// Get information about the bot.
         /// https://developers.line.biz/ja/reference/messaging-api/#get-bot-info
         /// </summary>
-        /// <param name="groupId"></param>
-        Task<BotInfo> GetBotInfo(string groupId);
+        Task<BotInfo> GetBotInfo();
         #endregion
 
         #region Group
