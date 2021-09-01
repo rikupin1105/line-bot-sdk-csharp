@@ -7,10 +7,10 @@ namespace FunctionAppSample
 {
     class LineBotApp : WebhookApplication
     {
-        private LineMessagingClient lineMessagingClient { get; set; }
+        private LineMessagingClient LineMessagingClient { get; set; }
         public LineBotApp()
         {
-            lineMessagingClient = new LineMessagingClient(Environment.GetEnvironmentVariable("CHANNEL_ACCESS_TOKEN")); ;
+            LineMessagingClient = new LineMessagingClient(Environment.GetEnvironmentVariable("CHANNEL_ACCESS_TOKEN")); ;
         }
         protected override async Task OnMessageAsync(MessageEvent ev)
         {
@@ -38,7 +38,7 @@ namespace FunctionAppSample
             //https://developers.line.biz/en/reference/messaging-api/#message-event
 
             if (!(ev.Message is TextEventMessage msg)) { return; }
-            await lineMessagingClient.ReplyTextAsync(ev.ReplyToken, msg.Text);
+            await LineMessagingClient.ReplyTextAsync(ev.ReplyToken, msg.Text);
         }
         protected override async Task OnUnsendAsync(UnsendEvent ev)
         {
