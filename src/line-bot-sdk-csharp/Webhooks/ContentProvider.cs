@@ -15,7 +15,6 @@
         /// </summary>
         public string OriginalContentUrl { get; }
 
-
         /// <summary>
         /// URL of the preview image. Only included when contentProvider.type is external.
         /// </summary>
@@ -24,18 +23,10 @@
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="type">
-        /// Provider of the media file.
-        /// / line: LINE.The binary media data can be retrieved from the content endpoint.
-        /// / external: Provider other than LINE
-        /// </param>
-        /// <param name="originalContentUrl">
-        /// URL of the media file. Only included when contentProvider.type is external.
-        /// </param>
-        /// <param name="previewImageUrl">
-        /// URL of the preview image. Only included when contentProvider.type is external.
-        /// </param>
-        public ContentProvider(ContentProviderType type, string originalContentUrl, string previewImageUrl)
+        /// <param name="type"></param>
+        /// <param name="originalContentUrl"></param>
+        /// <param name="previewImageUrl"></param>
+        public ContentProvider(ContentProviderType type, string originalContentUrl = null, string previewImageUrl = null)
         {
             Type = type;
             OriginalContentUrl = originalContentUrl;

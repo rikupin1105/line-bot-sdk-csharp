@@ -78,6 +78,26 @@ namespace LineMessagingAPI.Webhooks
                         mention);
 
                 case EventMessageType.Image:
+                    ContentProvider imageContentProvider = null;
+                    if (Enum.TryParse((string)message.contentProvider?.type, true, out ContentProviderType ImageProviderType))
+                    {
+                        if (ImageProviderType == ContentProviderType.Line)
+                        {
+                            imageContentProvider = new ContentProvider(ImageProviderType);
+                        }
+                        if (ImageProviderType == ContentProviderType.External)
+                        {
+                            imageContentProvider = new ContentProvider(ImageProviderType,
+                                    (string)message.contentProvider?.originalContentUrl,
+                                    (string)message.contentProvider?.previewContentUrl);
+                        }
+                    }
+                    return new ImageEventMessage(
+                        messageType,
+                        (string)message.id,
+                        imageContentProvider,
+                        message.imageSet);
+
                 case EventMessageType.Audio:
                 case EventMessageType.Video:
                     ContentProvider contentProvider = null;
