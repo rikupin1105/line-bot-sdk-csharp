@@ -93,7 +93,6 @@ namespace LineMessagingAPI.Webhooks
                         }
                     }
                     return new ImageEventMessage(
-                        messageType,
                         (string)message.id,
                         imageContentProvider,
                         message.imageSet);

@@ -18,7 +18,7 @@
         /// <param name="id"></param>
         /// <param name="contentProvider"></param>
         /// <param name="imageSet"></param>
-        public ImageEventMessage(EventMessageType type, string id, ContentProvider contentProvider = null, ImageSet imageSet = null) : base(type, id)
+        public ImageEventMessage(string id, ContentProvider contentProvider = null, ImageSet imageSet = null) : base(EventMessageType.Image, id)
         {
             ContentProvider = contentProvider;
             ImageSet = imageSet;
