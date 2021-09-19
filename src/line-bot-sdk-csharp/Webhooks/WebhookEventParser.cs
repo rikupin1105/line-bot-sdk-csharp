@@ -27,6 +27,5 @@ namespace LineMessagingAPI.Webhooks
                 yield return webhookEvent;
             }
         }
-        
     }
 }

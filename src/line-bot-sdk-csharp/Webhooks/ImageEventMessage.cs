@@ -14,7 +14,6 @@
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="type"></param>
         /// <param name="id"></param>
         /// <param name="contentProvider"></param>
         /// <param name="imageSet"></param>
