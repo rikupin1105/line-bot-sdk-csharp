@@ -49,7 +49,8 @@ namespace LineMessagingAPI.Webhooks
         /// Authentication is performed as follows.
         /// 1. With the channel secret as the secret key, your application retrieves the digest value in the request body created using the HMAC-SHA256 algorithm.
         /// 2. The server confirms that the signature in the request header matches the digest value which is Base64 encoded
-        /// https://developers.line.me/en/docs/messaging-api/reference/#signature-validation
+        /// https://developers.line.biz/en/reference/messaging-api/#signature-validation
+        /// https://developers.line.biz/ja/reference/messaging-api/#signature-validation
         /// </summary>
         /// <param name="channelSecret">ChannelSecret</param>
         /// <param name="xLineSignature">X-Line-Signature header</param>
