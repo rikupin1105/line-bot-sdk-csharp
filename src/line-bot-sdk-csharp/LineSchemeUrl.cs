@@ -229,7 +229,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name="textMessage"></param>
         /// <returns>String of LINE Scheme URL</returns>
-        public static string GetMsgTextUrl(string textMessage) => string.Format(msgText, Uri.EscapeUriString(textMessage));
+        public static string GetMsgTextUrl(string textMessage) => string.Format(msgText, Uri.EscapeDataString(textMessage));
 
         /// <summary>
         /// Opens the "Share with" screen where users can select friends, groups, or chats to send a preset text message.<para> 
