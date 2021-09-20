@@ -77,7 +77,7 @@ namespace LineMessagingAPI.Webhooks
                     return new PostbackEvent(eventSource, (long)dynamicObject.timestamp, (string)dynamicObject.replyToken, postback, (string)dynamicObject.mode);
                 case WebhookEventType.VideoPlayComplete:
                     var videoPlayComplete = new VideoPlayComplete((string)dynamicObject.videoPlayComplete?.trackingId);
-                    return new VideoPlayCompleteEvent(eventSource, (long)dynamicObject.timestamp, (string)dynamicObject.mode, (string)dynamicObject.replyToken, videoPlayComplete);
+                    return new VideoViewingCompleteEvent(eventSource, (long)dynamicObject.timestamp, (string)dynamicObject.mode, (string)dynamicObject.replyToken, videoPlayComplete);
                 case WebhookEventType.Beacon:
                     if (!Enum.TryParse((string)dynamicObject.beacon.type, true, out BeaconType beaconType))
                     {

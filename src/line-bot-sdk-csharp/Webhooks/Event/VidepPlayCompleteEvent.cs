@@ -1,10 +1,10 @@
 ﻿namespace LineMessagingAPI.Webhooks
 {
-    public class VideoPlayCompleteEvent : ReplyableEvent
+    public class VideoViewingCompleteEvent : ReplyableEvent
     {
         public VideoPlayComplete VideoPlayComplete;
 
-        public VideoPlayCompleteEvent(WebhookEventSource source, long timestamp, string mode, string replyToken, VideoPlayComplete videoPlayComplete) : base(WebhookEventType.VideoPlayComplete, source, timestamp, replyToken, mode)
+        public VideoViewingCompleteEvent(WebhookEventSource source, long timestamp, string mode, string replyToken, VideoPlayComplete videoPlayComplete) : base(WebhookEventType.VideoPlayComplete, source, timestamp, replyToken, mode)
         {
             VideoPlayComplete = videoPlayComplete;
         }

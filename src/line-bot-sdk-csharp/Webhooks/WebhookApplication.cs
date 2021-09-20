@@ -35,7 +35,7 @@ namespace LineMessagingAPI.Webhooks
                     case PostbackEvent postback:
                         await OnPostbackAsync(postback).ConfigureAwait(false);
                         break;
-                    case VideoPlayCompleteEvent videoPlayCompleteEvent:
+                    case VideoViewingCompleteEvent videoPlayCompleteEvent:
                         await OnVideoPlayCompleteAsync(videoPlayCompleteEvent).ConfigureAwait(false);
                         break;
                     case BeaconEvent beacon:
@@ -71,7 +71,7 @@ namespace LineMessagingAPI.Webhooks
 
         protected virtual Task OnUnfollowAsync(UnfollowEvent ev) => Task.CompletedTask;
 
-        protected virtual Task OnVideoPlayCompleteAsync(VideoPlayCompleteEvent ev) => Task.CompletedTask;
+        protected virtual Task OnVideoPlayCompleteAsync(VideoViewingCompleteEvent ev) => Task.CompletedTask;
 
         protected virtual Task OnBeaconAsync(BeaconEvent ev) => Task.CompletedTask;
 
