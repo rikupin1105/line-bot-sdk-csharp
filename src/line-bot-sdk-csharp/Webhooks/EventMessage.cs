@@ -95,7 +95,8 @@ namespace LineMessagingAPI.Webhooks
                     return new ImageEventMessage(
                         (string)message.id,
                         imageContentProvider,
-                        message.imageSet);
+                        new ImageSet((string)message.imageSet.id, (int)message.imageSet.index, (int)message.imageSet.total));
+                        
 
                 case EventMessageType.Audio:
                 case EventMessageType.Video:
