@@ -33,7 +33,7 @@ namespace LineMessagingAPI.Webhooks
             {
                 return null;
             }
-            var sourceId = "";
+            string sourceId;
             switch (sourceType)
             {
                 case EventSourceType.User:
