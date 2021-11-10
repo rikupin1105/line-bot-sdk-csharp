@@ -408,21 +408,6 @@ $@"{{
             return JsonConvert.DeserializeObject<UserProfile>(content);
         }
 
-        // https://developers.line.biz/ja/reference/messaging-api/#get-follower-ids
-
-        public virtual async Task<FollowerIds> GetFollowersIdsAsync(int limit = 300, string start = null)
-        {
-            var requestUrl = $"{_uri}/bot/followers/ids";
-            requestUrl += $"?limit={limit}";
-            if (start != null)
-            {
-                requestUrl += $"?start={start}";
-            }
-
-            var content = await GetStringAsync($"{_uri}/bot/followers/ids").ConfigureAwait(false);
-            return JsonConvert.DeserializeObject<FollowerIds>(content);
-        }
-
         #endregion
 
         #region Bot
