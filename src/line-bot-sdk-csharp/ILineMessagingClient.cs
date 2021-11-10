@@ -168,6 +168,7 @@ namespace LineMessagingAPI
         /// <param name="userId">User ID</param>
         /// <returns></returns>
         Task<UserProfile> GetUserProfileAsync(string userId);
+        Task<FollowerIds> GetFollowerIdsAsync(int limit, string start);
 
         #endregion
 
@@ -209,7 +210,7 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name="groupId">Identifier of the group</param>
         /// <param name="continuationToken">ContinuationToken</param>
-        Task<GroupMemberIds> GetGroupMemberIdsAsync(string groupId, string continuationToken=null);
+        Task<GroupMemberIds> GetGroupMemberIdsAsync(string groupId, string continuationToken = null);
 
         /// <summary>
         /// グループメンバーのプロフィール情報を取得する
