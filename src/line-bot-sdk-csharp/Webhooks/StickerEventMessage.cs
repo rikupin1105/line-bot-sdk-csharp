@@ -10,15 +10,13 @@
         public string StickerId { get; }
         public StickerResourceType StickerResourceType { get; }
         public string[] Keywords { get; }
-        public string Text { get; }
 
-        public StickerEventMessage(string id, string packageId, string stickerId, string[] keywords, StickerResourceType stickerResourceType, string text) : base(EventMessageType.Sticker, id)
+        public StickerEventMessage(string id, string packageId, string stickerId, string[] keywords, StickerResourceType stickerResourceType) : base(EventMessageType.Sticker, id)
         {
             PackageId = packageId;
             StickerId = stickerId;
             Keywords = keywords;
             StickerResourceType = stickerResourceType;
-            Text = text;
         }
     }
 }

@@ -8,7 +8,7 @@
         ANIMATION_SOUND,
         POPUP,
         POPUP_SOUND,
-        CUSTOM,
-        MESSAGE
+        NAME_TEXT,
+        PER_STICKER_TEXT
     }
 }
