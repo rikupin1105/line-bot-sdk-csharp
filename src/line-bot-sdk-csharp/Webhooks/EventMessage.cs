@@ -139,7 +139,8 @@ namespace LineMessagingAPI.Webhooks
                         (string)message.packageId,
                         (string)message.stickerId,
                         keywords_list.ToArray(),
-                        (StickerResourceType)message.stickerResourceType);
+                        (StickerResourceType)message.stickerResourceType,
+                        (string)message.text);
 
                 case EventMessageType.File:
                     return new FileEventMessage(
