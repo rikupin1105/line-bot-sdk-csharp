@@ -79,6 +79,7 @@ namespace LineMessagingAPI.Webhooks
 
                 case EventMessageType.Image:
                     ContentProvider imageContentProvider = null;
+                    ImageSet imageSet = null;
                     if (Enum.TryParse((string)message.contentProvider?.type, true, out ContentProviderType ImageProviderType))
                     {
                         if (ImageProviderType == ContentProviderType.Line)
@@ -91,12 +92,15 @@ namespace LineMessagingAPI.Webhooks
                                     (string)message.contentProvider?.originalContentUrl,
                                     (string)message.contentProvider?.previewContentUrl);
                         }
+                        if (message.imageSet != null)
+                        {
+                            imageSet = new ImageSet((string)message.imageSet.id, (int)message.imageSet.index, (int)message.imageSet.total);
+                        }
                     }
                     return new ImageEventMessage(
                         (string)message.id,
-                        imageContentProvider,
-                        new ImageSet((string)message.imageSet.id, (int)message.imageSet.index, (int)message.imageSet.total));
-                        
+                        imageContentProvider, imageSet);
+
 
                 case EventMessageType.Audio:
                 case EventMessageType.Video:
