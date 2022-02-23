@@ -89,7 +89,7 @@ namespace FunctionAppSample
             //https://developers.line.biz/en/reference/messaging-api/#postback-event
         }
 
-        protected override async Task OnVideoPlayCompleteAsync(VideoPlayCompleteEvent ev)
+        protected override async Task OnVideoPlayCompleteAsync(VideoViewingCompleteEvent ev)
         {
             //動画視聴完了イベント
             //Video viewing complete event
