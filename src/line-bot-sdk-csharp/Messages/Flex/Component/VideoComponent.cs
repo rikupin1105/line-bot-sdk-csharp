@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace LineMessagingAPI
+﻿namespace LineMessagingAPI
 {
     public class VideoComponent : IFlexComponent
     {
