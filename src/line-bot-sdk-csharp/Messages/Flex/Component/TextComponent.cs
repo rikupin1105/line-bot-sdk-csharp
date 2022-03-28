@@ -19,6 +19,7 @@ namespace LineMessagingAPI
         public Align? Align { get; set; }
         public Gravity? Gravity { get; set; }
         public bool? Wrap { get; set; }
+        public string LineSpacing { get; set; }
         public int? MaxLines { get; set; }
         public Weight? Weight { get; set; }
         public string Color { get; set; }
