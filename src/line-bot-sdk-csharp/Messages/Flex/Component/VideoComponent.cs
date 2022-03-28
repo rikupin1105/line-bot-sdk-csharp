@@ -14,5 +14,6 @@ namespace LineMessagingAPI
         {
             Url = url;
         }
+        public VideoComponent() { }
     }
 }
