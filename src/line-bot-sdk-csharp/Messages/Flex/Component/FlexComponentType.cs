@@ -13,6 +13,7 @@ namespace LineMessagingAPI
         Image,
         Separator,
         Text,
-        Span
+        Span,
+        Video
     }
 }
