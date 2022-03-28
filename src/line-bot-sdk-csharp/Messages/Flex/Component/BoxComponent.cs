@@ -22,7 +22,9 @@ namespace LineMessagingAPI
         public string BorderWidth { get; set; }
         public string CornerRadius { get; set; }
         public string Width { get; set; }
+        public string MaxWidth { get; set; }
         public string Height { get; set; }
+        public string MaxHeight { get; set; }
         public int? Flex { get; set; }
         public string Spacing { get; set; }
         public string Margin { get; set; }
