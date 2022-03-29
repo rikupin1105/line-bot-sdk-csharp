@@ -55,6 +55,23 @@ await LineMessagingClient.ReplyVideoAsync("replyToken", "originalContentUrl", "P
 await LineMessagingClient.PushVideoAsync("to", "originalContentUrl", "PreviewImageUrl");
 ```
 
+### 音声メッセージ
+ReplyAudioAsync もしくは PushAudioAsync を使用します。  
+MessagingAPI では M4A のみサポートしています。MP3ファイル等をお使いの場合は FFmpeg などのサービスをご利用ください。
+```cs
+await LineMessagingClient.ReplyAudioAsync("replyToken", "originalContentUrl", 2000);
+await LineMessagingClient.PushAudioAsync("to", "originalContentUrl", 2000);
+```
+
+### 位置情報メッセージ
+ReplyLocationAsync もしくは PushLocationAsync を使用します。
+```cs
+await LineMessagingClient.ReplyLocationAsync("replyToken", "title", "address", (decimal)35.687574, (decimal)139.72922);
+await LineMessagingClient.PushLocationAsync("to", "title", "address", (decimal)35.687574, (decimal)139.72922);
+```
+
+
+
 ### Flex Message
 画像のようなFlex Messageを作成する場合  
 ![image](https://user-images.githubusercontent.com/41769991/160522785-4a3593b2-a3b1-4712-86a3-cabb79d109cf.png)
