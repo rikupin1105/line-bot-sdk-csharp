@@ -10,7 +10,7 @@ namespace Test
     [TestClass]
     public class FlexObjectSerializeTest
     {
-        private static JsonSerializerSettings _jsonSerializerSettings = new JsonSerializerSettings()
+        private static readonly JsonSerializerSettings _jsonSerializerSettings = new ()
         {
             ContractResolver = new CamelCasePropertyNamesContractResolver(),
             NullValueHandling = NullValueHandling.Ignore
