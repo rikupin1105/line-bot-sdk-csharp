@@ -132,7 +132,7 @@ namespace LineMessagingAPI
         {
             return ReplyMessageAsync(replyToken, new ISendMessage[] { new ImageMessage(originalContentUrl, previewImageUrl, quickReply, sender) }, notificationDisabled);
         }
-        public virtual Task ReplyVideoAsync(string replyToken, string originalContentUrl, string previewImageUrl, string trackingId, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null)
+        public virtual Task ReplyVideoAsync(string replyToken, string originalContentUrl, string previewImageUrl, string trackingId = null, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null)
         {
             return ReplyMessageAsync(replyToken, new ISendMessage[] { new VideoMessage(originalContentUrl, previewImageUrl, trackingId, quickReply, sender) }, notificationDisabled);
         }
@@ -178,7 +178,7 @@ namespace LineMessagingAPI
         {
             return PushMessageAsync(to, new ISendMessage[] { new ImageMessage(originalContentUrl, previewImageUrl, quickReply, sender) }, notificationDisabled, RetryKey);
         }
-        public virtual Task PushVideoAsync(string to, string originalContentUrl, string previewImageUrl, string trackingId, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null)
+        public virtual Task PushVideoAsync(string to, string originalContentUrl, string previewImageUrl, string trackingId = null, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null)
         {
             return PushMessageAsync(to, new ISendMessage[] { new VideoMessage(originalContentUrl, previewImageUrl, trackingId, quickReply, sender) }, notificationDisabled, RetryKey);
         }
