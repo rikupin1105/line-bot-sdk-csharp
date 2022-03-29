@@ -78,14 +78,17 @@ await LineMessagingClient.PushLocationAsync("to", "title", "address", (decimal)3
 実装済みです。  
 執筆中
 
+### Flexメッセージ
+ReplyFlexMessageAsync もしくは PushLocationAsync を使用します。
+```cs
+await LineMessagingClient.ReplyFlexMessageAsync("replyToken", "altText", content);
+await LineMessagingClient.PushFlexMessageAsync("to", "altText", content);
+```
 
-
-
-### Flex Message
 画像のようなFlex Messageを作成する場合  
 ![image](https://user-images.githubusercontent.com/41769991/160522785-4a3593b2-a3b1-4712-86a3-cabb79d109cf.png)
 ```cs
-var flex = new BubbleContainer()
+var content = new BubbleContainer()
 {
     Hero = new ImageComponent("https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png")
     {
@@ -217,12 +220,3 @@ var flex = new BubbleContainer()
         }
     }
 };
-```
-#### 送信する
-```cs
-var messages = new ISendMessage[]
-{
-    new FlexMessage("altText", flex)
-};
-await LineMessagingClient.ReplyMessageAsync("replyToken", messages);
-```
