@@ -24,6 +24,9 @@ var LineMessagingClient = new LineMessagingClient("channelAccessToken");
 ```
 
 ## メッセージ送信
+
+複数のメッセージを送信する必要がある場合は後述の 複数メッセージを送信する場合 を参照してください。
+
 ### テキストメッセージ
 ReplyTextAsync もしくは PushTextAsync を使用します。
 ```cs
@@ -83,6 +86,19 @@ ReplyFlexMessageAsync もしくは PushLocationAsync を使用します。
 ```cs
 await LineMessagingClient.ReplyFlexMessageAsync("replyToken", "altText", content);
 await LineMessagingClient.PushFlexMessageAsync("to", "altText", content);
+```
+
+### 複数メッセージを送信する場合
+ReplyMessageAsync もしくは PushMessageAsync を使用します。  
+同時に配信できるメッセージは 5件 です。
+```cs
+var messages = new ISendMessage[]
+{
+    new TextMessage("HelloWorld"),
+    new StickerMessage("446","1988")
+};
+await LineMessagingClient.ReplyMessageAsync("replyToken", messages);
+await LineMessagingClient.PushMessageAsync("to", messages);
 ```
 
 画像のようなFlex Messageを作成する場合  
