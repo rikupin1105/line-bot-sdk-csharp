@@ -48,7 +48,12 @@ await LineMessagingClient.PushImageAsync("to", "originalContentUrl", "previewIma
 ```
 
 ### 動画メッセージ
-
+ReplyVideoAsync もしくは PushVideoAsync を使用します。  
+使用可能な動画URLは [こちら](https://developers.line.biz/ja/reference/messaging-api/#video-message) を参照してください。
+```cs
+await LineMessagingClient.ReplyVideoAsync("replyToken", "originalContentUrl", "PreviewImageUrl");
+await LineMessagingClient.PushVideoAsync("to", "originalContentUrl", "PreviewImageUrl");
+```
 
 ### Flex Message
 画像のようなFlex Messageを作成する場合  
