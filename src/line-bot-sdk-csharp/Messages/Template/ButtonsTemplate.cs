@@ -106,7 +106,7 @@ namespace LineMessagingAPI
         /// <param name="defaultAction">
         /// Action when image is tapped; set for the entire image, title, and text area
         /// </param>
-        public ButtonsTemplate(string text, string thumbnailImageUrl = null, string title = null, IList<ITemplateAction> actions = null,
+        public ButtonsTemplate(string text, IList<ITemplateAction> actions, string thumbnailImageUrl = null, string title = null,
              ImageAspectRatioType imageAspectRatio = ImageAspectRatioType.Rectangle, ImageSizeType imageSize = ImageSizeType.Cover, string imageBackgroundColor = "#FFFFFF",
              ITemplateAction defaultAction = null)
         {
