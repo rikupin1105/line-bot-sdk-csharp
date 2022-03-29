@@ -6,7 +6,7 @@
         public ITemplateAction Action { get; set; }
         public int? Flex { get; set; }
         public string Margin { get; set; }
-        public Position Position { get; set; }
+        public Position? Position { get; set; }
         public string OffsetTop { get; set; }
         public string OffsetBottom { get; set; }
         public string OffsetStart { get; set; }

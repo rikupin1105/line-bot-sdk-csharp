@@ -31,7 +31,7 @@ namespace LineMessagingAPI
         public string PaddingBottom { get; set; }
         public string PaddingStart { get; set; }
         public string PaddingEnd { get; set; }
-        public Position Position { get; set; }
+        public Position? Position { get; set; }
         public string OffsetTop { get; set; }
         public string OffsetBottom { get; set; }
         public string OffsetStart { get; set; }

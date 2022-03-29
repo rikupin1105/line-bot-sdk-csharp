@@ -16,13 +16,13 @@ namespace LineMessagingAPI
         /// Optional for image carousel templates.Max: 12 characters.
         /// Optional for rich menus. Spoken when the accessibility feature is enabled on the client device. Max: 20 characters. Supported on LINE iOS version 8.2.0 and later.
         /// </summary>
-        public string Label { get; }
+        public string Label { get; set; }
 
         /// <summary>
         /// URI opened when the action is performed (Max: 1000 characters)
         /// Must start with http, https, or tel.
         /// </summary>
-        public string Uri { get; }
+        public string Uri { get; set; }
 
         /// <summary>
         /// URI opened on LINE for macOS and Windows when the action is performed (Max: 1000 characters) If the altUri.desktop property is set, 
@@ -32,7 +32,7 @@ namespace LineMessagingAPI
         /// LINE 5.12.0 or later for macOS and Windows</para>
         /// Note: The altUri.desktop property is supported only when you set URI actions in Flex Messages.
         /// </summary>
-        public AltUri AltUri { get; }
+        public AltUri AltUri { get; set; }
 
         /// <summary>
         /// Constructor
@@ -60,6 +60,11 @@ namespace LineMessagingAPI
             Label = label?.Substring(0, Math.Min(label.Length, 20));
             Uri = uri;
             AltUri = altUri;
+        }
+
+        public UriTemplateAction(string uri)
+        {
+            Uri = uri;
         }
 
         internal static UriTemplateAction CreateFrom(dynamic dynamicObject)
