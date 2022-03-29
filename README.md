@@ -15,9 +15,22 @@ See the official API documentation for more information
 - English: https://developers.line.biz/en/docs/messaging-api/overview/
 - Japanese: https://developers.line.biz/ja/docs/messaging-api/overview/
 
-## Flex Message
+## How to use
 
+### Client
+使用するにはまずクライアントを作成します。
+```cs
+var LineMessagingClient = new LineMessagingClient("channelAccessToken");
+```
 
+### Text Message
+ReplyTextAsync もしくは PushTextAsync を使用します。
+```cs
+await LineMessagingClient.ReplyTextAsync("replyToken","HelloWorld");
+await LineMessagingClient.PushTextAsync("userId", "HelloWorld");
+```
+
+### Flex Message
 画像のようなFlex Messageを作成する場合  
 ![image](https://user-images.githubusercontent.com/41769991/160522785-4a3593b2-a3b1-4712-86a3-cabb79d109cf.png)
 ```cs
