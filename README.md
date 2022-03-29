@@ -70,6 +70,15 @@ await LineMessagingClient.ReplyLocationAsync("replyToken", "title", "address", (
 await LineMessagingClient.PushLocationAsync("to", "title", "address", (decimal)35.687574, (decimal)139.72922);
 ```
 
+### イメージマップメッセージ
+実装済みです。  
+執筆中
+
+### テンプレートメッセージ
+実装済みです。  
+執筆中
+
+
 
 
 ### Flex Message
