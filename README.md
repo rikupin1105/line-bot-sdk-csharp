@@ -25,7 +25,7 @@ var LineMessagingClient = new LineMessagingClient("channelAccessToken");
 
 ## メッセージ送信
 
-複数のメッセージを送信する必要がある場合は後述の 複数メッセージを送信する場合 を参照してください。
+複数のメッセージを送信する必要がある場合は後述の [複数メッセージを送信する場合](https://github.com/rikupin1105/line-bot-sdk-csharp#%E8%A4%87%E6%95%B0%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%82%92%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88) を参照してください。
 
 ### テキストメッセージ
 ReplyTextAsync もしくは PushTextAsync を使用します。
