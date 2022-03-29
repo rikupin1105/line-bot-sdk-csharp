@@ -120,7 +120,12 @@ namespace Test
             var unsend_source_Id = "U91eeaf62d...";
             var unsend_message_Id = "325708";
 
-
+            var video_viewing_complete_type = "videoPlayComplete";
+            var video_viewing_complete_replyToken = "0f3779fba3b349968c5d07db31eabf65";
+            var video_viewing_complete_trackingId = "track-id";
+            var video_viewing_complete_timestamp = 1462629479859;
+            var video_viewing_complete_source_type = "user";
+            var video_viewing_complete_source_id = "U91eeaf62d...";
 
             var json =
 $@"{{
@@ -310,6 +315,18 @@ $@"{{
             ""unsend"": {{
                 ""messageId"": ""{unsend_message_Id}""
             }}
+        }},
+        {{
+            ""replyToken"": ""{video_viewing_complete_replyToken}"",
+            ""type"": ""{video_viewing_complete_type}"",
+            ""timestamp"": ""{video_viewing_complete_timestamp}"",
+            ""source"": {{
+                ""type"":""{video_viewing_complete_source_type}"",
+                ""userId"":""{video_viewing_complete_source_id}"",
+            }},
+            ""videoPlayComplete"": {{
+                ""trackingId"":""{video_viewing_complete_trackingId}""
+            }}
         }}
     ]
 }}";
@@ -437,6 +454,13 @@ $@"{{
             Assert.AreEqual(unsend.Source.Type.ToString().ToLower(), unsend_source_type);
             Assert.AreEqual(unsend.Source.UserId, unsend_source_Id);
             Assert.AreEqual(unsend.Unsend.MessageId, unsend_message_Id);
+
+            var videoViewComplete = (VideoViewingCompleteEvent)events[14];
+            Assert.AreEqual(videoViewComplete.Type.ToString().ToLower(), video_viewing_complete_type.ToLower());
+            Assert.AreEqual(videoViewComplete.Timestamp, video_viewing_complete_timestamp);
+            Assert.AreEqual(videoViewComplete.Source.Type.ToString().ToLower(), video_viewing_complete_source_type);
+            Assert.AreEqual(videoViewComplete.Source.UserId, video_viewing_complete_source_id);
+            Assert.AreEqual(videoViewComplete.VideoPlayComplete.TrackingId, video_viewing_complete_trackingId);
 
             var testApp = new TestApp();
             await testApp.RunAsync(events);
