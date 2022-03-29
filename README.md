@@ -23,12 +23,22 @@ See the official API documentation for more information
 var LineMessagingClient = new LineMessagingClient("channelAccessToken");
 ```
 
-### Text Message
+## メッセージ送信
+### テキストメッセージ
 ReplyTextAsync もしくは PushTextAsync を使用します。
 ```cs
-await LineMessagingClient.ReplyTextAsync("replyToken","HelloWorld");
-await LineMessagingClient.PushTextAsync("userId", "HelloWorld");
+await LineMessagingClient.ReplyTextAsync("replyToken", "HelloWorld");
+await LineMessagingClient.PushTextAsync("to", "HelloWorld");
 ```
+
+### スタンプメッセージ
+ReplyStickerAsync もしくは PushStickerAsync を使用します。  
+packageId と stickerId は [送信可能なスタンプリスト](https://developers.line.biz/ja/docs/messaging-api/sticker-list/) を参照してください
+```cs
+await LineMessagingClient.ReplyStickerAsync("replyToken", "packageId", "stickerId");
+await LineMessagingClient.PushStickerAsync("to", "packageId", "stickerId");
+```
+
 
 ### Flex Message
 画像のようなFlex Messageを作成する場合  
