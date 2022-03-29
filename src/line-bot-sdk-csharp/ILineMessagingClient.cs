@@ -26,6 +26,8 @@ namespace LineMessagingAPI
         Task ReplyVideoAsync(string replyToken, string originalContentUrl, string previewImageUrl, string trackingId, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null);
         Task ReplyAudioAsync(string replyToken, string originalContentUrl, long duration, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null);
         Task ReplyLocationAsync(string replyToken, string title, string address, decimal latitude, decimal longitude, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null);
+        Task ReplyFlexMessageAsync(string replyToken, string altText, IFlexContainer contents, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null);
+
 
         /// <summary>
         /// プッシュメッセージを送る。
@@ -39,6 +41,8 @@ namespace LineMessagingAPI
         Task PushVideoAsync(string to, string originalContentUrl, string previewImageUrl, string trackingId, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null);
         Task PushAudioAsync(string to, string originalContentUrl, long duration, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null);
         Task PushLocationAsync(string to, string title, string address, decimal latitude, decimal longitude, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null);
+        Task PushFlexMessageAsync(string to, string altText, IFlexContainer contents, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null);
+
 
         /// <summary>
         /// マルチキャストメッセージを送る。

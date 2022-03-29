@@ -144,6 +144,10 @@ namespace LineMessagingAPI
         {
             return ReplyMessageAsync(replyToken, new ISendMessage[] { new LocationMessage(title, address, latitude, longitude, quickReply, sender) }, notificationDisabled);
         }
+        public virtual Task ReplyFlexMessageAsync(string replyToken, string altText, IFlexContainer contents, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null)
+        {
+            return ReplyMessageAsync(replyToken, new ISendMessage[] { new FlexMessage(altText, contents, quickReply, sender) }, notificationDisabled);
+        }
 
 
         /// <summary>
@@ -189,6 +193,10 @@ namespace LineMessagingAPI
         public virtual Task PushLocationAsync(string to, string title, string address, decimal latitude, decimal longitude, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null)
         {
             return PushMessageAsync(to, new ISendMessage[] { new LocationMessage(title, address, latitude, longitude, quickReply, sender) }, notificationDisabled, RetryKey);
+        }
+        public virtual Task PushFlexMessageAsync(string to, string altText, IFlexContainer contents, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null)
+        {
+            return PushMessageAsync(to, new ISendMessage[] { new FlexMessage(altText, contents, quickReply, sender) }, notificationDisabled, RetryKey);
         }
 
         /// <summary>
