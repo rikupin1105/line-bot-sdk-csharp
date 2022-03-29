@@ -114,7 +114,7 @@ namespace LineMessagingAPI
             Title = title?.Substring(0, Math.Min(title.Length, 40));
             Text = (string.IsNullOrEmpty(thumbnailImageUrl) && string.IsNullOrEmpty(title))
                 ? text.Substring(0, Math.Min(text.Length, 160)) : text.Substring(0, Math.Min(text.Length, 60));
-            Actions = actions ?? new List<ITemplateAction>();
+            Actions = actions;
             ImageAspectRatio = imageAspectRatio;
             ImageSize = imageSize;
             ImageBackgroundColor = imageBackgroundColor;
