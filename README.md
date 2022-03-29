@@ -33,11 +33,21 @@ await LineMessagingClient.PushTextAsync("to", "HelloWorld");
 
 ### スタンプメッセージ
 ReplyStickerAsync もしくは PushStickerAsync を使用します。  
-packageId と stickerId は [送信可能なスタンプリスト](https://developers.line.biz/ja/docs/messaging-api/sticker-list/) を参照してください
+packageId と stickerId は [送信可能なスタンプリスト](https://developers.line.biz/ja/docs/messaging-api/sticker-list/) を参照してください.
 ```cs
 await LineMessagingClient.ReplyStickerAsync("replyToken", "packageId", "stickerId");
 await LineMessagingClient.PushStickerAsync("to", "packageId", "stickerId");
 ```
+
+### 画像メッセージ
+ReplyImageAsync もしくは PushImageAsync を使用します。  
+使用可能な画像URLは [こちら](https://developers.line.biz/ja/reference/messaging-api/#image-message) を参照してください。
+```cs
+await LineMessagingClient.ReplyImageAsync("replyToken", "originalContentUrl", "previewImageUrl");
+await LineMessagingClient.PushImageAsync("to", "originalContentUrl", "previewImageUrl");
+```
+
+### 動画メッセージ
 
 
 ### Flex Message
