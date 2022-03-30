@@ -12,8 +12,8 @@ namespace LineMessagingAPI
         /// Flex
         /// </summary>
         public MessageType Type { get; } = MessageType.Flex;
-        public QuickReply QuickReply { get; set; }
-        public Sender Sender { get; set; }
+        public QuickReply? QuickReply { get; set; }
+        public Sender? Sender { get; set; }
         /// <summary>
         /// Alternative text (Max: 400 characters)
         /// </summary>
@@ -30,11 +30,11 @@ namespace LineMessagingAPI
         /// <param name="contents"></param>
         /// <param name="quickReply"></param>
         /// <param name="sender"></param>
-        public FlexMessage(string altText, IFlexContainer contents, QuickReply quickReply = null, Sender sender = null)
+        public FlexMessage(string altText, IFlexContainer contents, QuickReply? quickReply = null, Sender? sender = null)
         {
-            QuickReply = quickReply;
-            AltText = altText.Substring(0, Math.Min(altText.Length, 400));
+            AltText = altText[..Math.Min(altText.Length, 400)];
             Contents = contents;
+            QuickReply = quickReply;
             Sender = sender;
         }
 

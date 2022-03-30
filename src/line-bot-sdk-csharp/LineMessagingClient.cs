@@ -55,8 +55,10 @@ namespace LineMessagingAPI
                     ["client_id"] = channelId,
                     ["client_secret"] = channelAccessToken
                 })).ConfigureAwait(false);
+
             await response.EnsureSuccessStatusCodeAsync().ConfigureAwait(false);
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
             return JsonConvert.DeserializeObject<ChannelAccessToken>(json,
                 new JsonSerializerSettings
                 {
@@ -64,7 +66,7 @@ namespace LineMessagingAPI
                     {
                         NamingStrategy = new SnakeCaseNamingStrategy()
                     }
-                });
+                }) ?? throw new NullReferenceException();
         }
 
         /// <summary>
@@ -120,31 +122,31 @@ namespace LineMessagingAPI
             var response = await _client.SendAsync(request).ConfigureAwait(false);
             await response.EnsureSuccessStatusCodeAsync().ConfigureAwait(false);
         }
-        public virtual Task ReplyTextAsync(string replyToken, string message, Emoji[] emojis = null, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null)
+        public virtual Task ReplyTextAsync(string replyToken, string message, Emoji[]? emojis = null, bool notificationDisabled = false, QuickReply? quickReply = null, Sender? sender = null)
         {
             return ReplyMessageAsync(replyToken, new ISendMessage[] { new TextMessage(message, emojis, quickReply, sender) }, notificationDisabled);
         }
-        public virtual Task ReplyStickerAsync(string replyToken, string packageId, string stickerId, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null)
+        public virtual Task ReplyStickerAsync(string replyToken, string packageId, string stickerId, bool notificationDisabled = false, QuickReply? quickReply = null, Sender? sender = null)
         {
             return ReplyMessageAsync(replyToken, new ISendMessage[] { new StickerMessage(packageId, stickerId, quickReply, sender) }, notificationDisabled);
         }
-        public virtual Task ReplyImageAsync(string replyToken, string originalContentUrl, string previewImageUrl, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null)
+        public virtual Task ReplyImageAsync(string replyToken, string originalContentUrl, string previewImageUrl, bool notificationDisabled = false, QuickReply? quickReply = null, Sender? sender = null)
         {
             return ReplyMessageAsync(replyToken, new ISendMessage[] { new ImageMessage(originalContentUrl, previewImageUrl, quickReply, sender) }, notificationDisabled);
         }
-        public virtual Task ReplyVideoAsync(string replyToken, string originalContentUrl, string previewImageUrl, string trackingId = null, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null)
+        public virtual Task ReplyVideoAsync(string replyToken, string originalContentUrl, string previewImageUrl, string? trackingId = null, bool notificationDisabled = false, QuickReply? quickReply = null, Sender? sender = null)
         {
             return ReplyMessageAsync(replyToken, new ISendMessage[] { new VideoMessage(originalContentUrl, previewImageUrl, trackingId, quickReply, sender) }, notificationDisabled);
         }
-        public virtual Task ReplyAudioAsync(string replyToken, string originalContentUrl, long duration, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null)
+        public virtual Task ReplyAudioAsync(string replyToken, string originalContentUrl, long duration, bool notificationDisabled = false, QuickReply? quickReply = null, Sender? sender = null)
         {
             return ReplyMessageAsync(replyToken, new ISendMessage[] { new AudioMessage(originalContentUrl, duration, quickReply, sender) }, notificationDisabled);
         }
-        public virtual Task ReplyLocationAsync(string replyToken, string title, string address, decimal latitude, decimal longitude, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null)
+        public virtual Task ReplyLocationAsync(string replyToken, string title, string address, decimal latitude, decimal longitude, bool notificationDisabled = false, QuickReply? quickReply = null, Sender? sender = null)
         {
             return ReplyMessageAsync(replyToken, new ISendMessage[] { new LocationMessage(title, address, latitude, longitude, quickReply, sender) }, notificationDisabled);
         }
-        public virtual Task ReplyFlexMessageAsync(string replyToken, string altText, IFlexContainer contents, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null)
+        public virtual Task ReplyFlexMessageAsync(string replyToken, string altText, IFlexContainer contents, bool notificationDisabled = false, QuickReply? quickReply = null, Sender? sender = null)
         {
             return ReplyMessageAsync(replyToken, new ISendMessage[] { new FlexMessage(altText, contents, quickReply, sender) }, notificationDisabled);
         }
@@ -155,11 +157,11 @@ namespace LineMessagingAPI
         /// Send push messages.
         /// https://developers.line.biz/ja/reference/messaging-api/#send-push-message
         /// </summary>
-        public virtual async Task PushMessageAsync(string to, IList<ISendMessage> messages, bool notificationDisabled = false, string RetryKey = null)
+        public virtual async Task PushMessageAsync(string to, IList<ISendMessage> messages, bool notificationDisabled = false, string? RetryKey = null)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, $"{_uri}/bot/message/push");
 
-            if (RetryKey != null)
+            if (RetryKey is not null)
             {
                 _client.DefaultRequestHeaders.Add("X-Line-Retry-Key", RetryKey);
             }
@@ -170,31 +172,31 @@ namespace LineMessagingAPI
             var response = await _client.SendAsync(request).ConfigureAwait(false);
             await response.EnsureSuccessStatusCodeAsync().ConfigureAwait(false);
         }
-        public virtual Task PushTextAsync(string to, string message, Emoji[] emojis = null, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null)
+        public virtual Task PushTextAsync(string to, string message, Emoji[]? emojis = null, bool notificationDisabled = false, QuickReply? quickReply = null, Sender? sender = null, string? RetryKey = null)
         {
             return PushMessageAsync(to, new ISendMessage[] { new TextMessage(message, emojis, quickReply, sender) }, notificationDisabled, RetryKey);
         }
-        public virtual Task PushStickerAsync(string to, string packageId, string stickerId, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null)
+        public virtual Task PushStickerAsync(string to, string packageId, string stickerId, bool notificationDisabled = false, QuickReply? quickReply = null, Sender? sender = null, string? RetryKey = null)
         {
             return PushMessageAsync(to, new ISendMessage[] { new StickerMessage(packageId, stickerId, quickReply, sender) }, notificationDisabled, RetryKey);
         }
-        public virtual Task PushImageAsync(string to, string originalContentUrl, string previewImageUrl, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null)
+        public virtual Task PushImageAsync(string to, string originalContentUrl, string previewImageUrl, bool notificationDisabled = false, QuickReply? quickReply = null, Sender? sender = null, string? RetryKey = null)
         {
             return PushMessageAsync(to, new ISendMessage[] { new ImageMessage(originalContentUrl, previewImageUrl, quickReply, sender) }, notificationDisabled, RetryKey);
         }
-        public virtual Task PushVideoAsync(string to, string originalContentUrl, string previewImageUrl, string trackingId = null, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null)
+        public virtual Task PushVideoAsync(string to, string originalContentUrl, string previewImageUrl, string? trackingId = null, bool notificationDisabled = false, QuickReply? quickReply = null, Sender? sender = null, string? RetryKey = null)
         {
             return PushMessageAsync(to, new ISendMessage[] { new VideoMessage(originalContentUrl, previewImageUrl, trackingId, quickReply, sender) }, notificationDisabled, RetryKey);
         }
-        public virtual Task PushAudioAsync(string to, string originalContentUrl, long duration, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null)
+        public virtual Task PushAudioAsync(string to, string originalContentUrl, long duration, bool notificationDisabled = false, QuickReply? quickReply = null, Sender? sender = null, string? RetryKey = null)
         {
             return PushMessageAsync(to, new ISendMessage[] { new AudioMessage(originalContentUrl, duration, quickReply, sender) }, notificationDisabled, RetryKey);
         }
-        public virtual Task PushLocationAsync(string to, string title, string address, decimal latitude, decimal longitude, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null)
+        public virtual Task PushLocationAsync(string to, string title, string address, decimal latitude, decimal longitude, bool notificationDisabled = false, QuickReply? quickReply = null, Sender? sender = null, string? RetryKey = null)
         {
             return PushMessageAsync(to, new ISendMessage[] { new LocationMessage(title, address, latitude, longitude, quickReply, sender) }, notificationDisabled, RetryKey);
         }
-        public virtual Task PushFlexMessageAsync(string to, string altText, IFlexContainer contents, bool notificationDisabled = false, QuickReply quickReply = null, Sender sender = null, string RetryKey = null)
+        public virtual Task PushFlexMessageAsync(string to, string altText, IFlexContainer contents, bool notificationDisabled = false, QuickReply? quickReply = null, Sender? sender = null, string? RetryKey = null)
         {
             return PushMessageAsync(to, new ISendMessage[] { new FlexMessage(altText, contents, quickReply, sender) }, notificationDisabled, RetryKey);
         }
@@ -207,7 +209,7 @@ namespace LineMessagingAPI
         /// <param name="to">IDs of the receivers. Max: 500 users</param>
         /// <param name="messages">Reply messages. Up to 5 messages.</param>
         /// <param name="notificationDisabled">Notify the user.</param>
-        public virtual async Task MultiCastMessageAsync(IList<string> to, IList<ISendMessage> messages, bool notificationDisabled = false, string RetryKey = null)
+        public virtual async Task MultiCastMessageAsync(IList<string> to, IList<ISendMessage> messages, bool notificationDisabled = false, string? RetryKey = null)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, $"{_uri}/bot/message/multicast");
             if (RetryKey != null)
@@ -228,7 +230,7 @@ namespace LineMessagingAPI
         /// <param name="to">IDs of the receivers. Max: 500 users</param>
         /// <param name="notificationDisabled">Notify the user.</param>
         /// <param name="messages">Reply messages. Up to 5 messages.</param>
-        public virtual async Task MultiCastMessageWithJsonAsync(IList<string> to, bool notificationDisabled = false, string RetryKey = null, params string[] messages)
+        public virtual async Task MultiCastMessageWithJsonAsync(IList<string> to, bool notificationDisabled = false, string? RetryKey = null, params string[] messages)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, $"{_uri}/bot/message/multicast");
             var json =
@@ -254,7 +256,7 @@ $@"{{
         /// <param name="to">IDs of the receivers. Max: 500 users</param>
         /// <param name="notificationDisabled">Notify the user.</param>
         /// <param name="messages">Reply messages. Up to 5 messages.</param>
-        public virtual Task MultiCastMessageAsync(IList<string> to, bool notificationDisabled = false, string RetryKey = null, params string[] messages)
+        public virtual Task MultiCastMessageAsync(IList<string> to, bool notificationDisabled = false, string? RetryKey = null, params string[] messages)
         {
             return MultiCastMessageAsync(to, messages.Select(msg => new TextMessage(msg)).ToArray(), notificationDisabled, RetryKey);
         }
@@ -268,7 +270,7 @@ $@"{{
         public virtual async Task<ProgressNarrowcast> GetProgressNarrowcastAsync(string requestId)
         {
             var response = await GetStringAsync($"{_uri}/bot/message/progress/narrowcast");
-            return JsonConvert.DeserializeObject<ProgressNarrowcast>(response);
+            return JsonConvert.DeserializeObject<ProgressNarrowcast>(response) ?? throw new Exception();
         }
 
         /// <summary>
@@ -278,10 +280,10 @@ $@"{{
         /// </summary>
         /// <param name="messages">Reply text messages. Up to 5 messages.</param>
         /// <param name="notificationDisabled">Notify the user.</param>
-        public virtual async Task BroadCastMessageAsync(IList<ISendMessage> messages, bool notificationDisabled = false, string RetryKey = null)
+        public virtual async Task BroadCastMessageAsync(IList<ISendMessage> messages, bool notificationDisabled = false, string? RetryKey = null)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, $"{_uri}/bot/message/broadcast");
-            if (RetryKey != null)
+            if (RetryKey is not null)
             {
                 _client.DefaultRequestHeaders.Add("X-Line-Retry-Key", RetryKey);
             }
@@ -299,7 +301,7 @@ $@"{{
         /// </summary>
         /// <param name="notificationDisabled">Notify the user.</param>
         /// <param name="messages">Reply text messages. Up to 5 messages.</param>
-        public virtual Task BroadCastMessageAsync(bool notificationDisabled = false, string RetryKey = null, params string[] messages)
+        public virtual Task BroadCastMessageAsync(bool notificationDisabled = false, string? RetryKey = null, params string[] messages)
         {
             return BroadCastMessageAsync(messages.Select(msg => new TextMessage(msg)).ToArray(), notificationDisabled, RetryKey);
         }
@@ -341,7 +343,7 @@ $@"{{
         public virtual async Task<Quota> GetQuota()
         {
             var response = await GetStringAsync($"{_uri}/bot/message/quota");
-            return JsonConvert.DeserializeObject<Quota>(response);
+            return JsonConvert.DeserializeObject<Quota>(response) ?? throw new NullReferenceException();
         }
 
         /// <summary>
@@ -352,7 +354,7 @@ $@"{{
         public virtual async Task<Consumption> GetConsumption()
         {
             var response = await GetStringAsync($"{_uri}/bot/message/quota/consumption");
-            return JsonConvert.DeserializeObject<Consumption>(response);
+            return JsonConvert.DeserializeObject<Consumption>(response) ?? throw new NullReferenceException();
         }
 
         /// <summary>
@@ -363,7 +365,7 @@ $@"{{
         public virtual async Task<NumberOfMessages> GetNumberOfPushMessages(DateTime date)
         {
             var response = await GetStringAsync($"{_uri}/bot/message/delivery/push?date={date:yyyyMMdd}");
-            return JsonConvert.DeserializeObject<NumberOfMessages>(response);
+            return JsonConvert.DeserializeObject<NumberOfMessages>(response) ?? throw new NullReferenceException();
         }
 
         /// <summary>
@@ -374,7 +376,7 @@ $@"{{
         public virtual async Task<NumberOfMessages> GetNumberOfReplyMessages(DateTime date)
         {
             var response = await GetStringAsync($"{_uri}/bot/message/delivery/reply?date={date:yyyyMMdd}");
-            return JsonConvert.DeserializeObject<NumberOfMessages>(response);
+            return JsonConvert.DeserializeObject<NumberOfMessages>(response) ?? throw new NullReferenceException();
         }
 
         /// <summary>
@@ -385,7 +387,7 @@ $@"{{
         public virtual async Task<NumberOfMessages> GetNumberOfMulticastMessages(DateTime date)
         {
             var response = await GetStringAsync($"{_uri}/bot/message/delivery/multicast?date={date:yyyyMMdd}");
-            return JsonConvert.DeserializeObject<NumberOfMessages>(response);
+            return JsonConvert.DeserializeObject<NumberOfMessages>(response) ?? throw new NullReferenceException();
         }
 
         /// <summary>
@@ -396,7 +398,7 @@ $@"{{
         public virtual async Task<NumberOfMessages> GetNumberOfBroadcastMessages(DateTime date)
         {
             var response = await GetStringAsync($"{_uri}/bot/message/delivery/broadcast?date={date:yyyyMMdd}");
-            return JsonConvert.DeserializeObject<NumberOfMessages>(response);
+            return JsonConvert.DeserializeObject<NumberOfMessages>(response) ?? throw new NullReferenceException();
         }
 
         #endregion
@@ -413,7 +415,7 @@ $@"{{
         public virtual async Task<UserProfile> GetUserProfileAsync(string userId)
         {
             var content = await GetStringAsync($"{_uri}/bot/profile/{userId}").ConfigureAwait(false);
-            return JsonConvert.DeserializeObject<UserProfile>(content);
+            return JsonConvert.DeserializeObject<UserProfile>(content) ?? throw new NullReferenceException();
         }
 
         #endregion
@@ -429,7 +431,7 @@ $@"{{
         public virtual async Task<BotInfo> GetBotInfo()
         {
             var content = await GetStringAsync($"{_uri}/bot/info").ConfigureAwait(false);
-            return JsonConvert.DeserializeObject<BotInfo>(content);
+            return JsonConvert.DeserializeObject<BotInfo>(content) ?? throw new NullReferenceException();
         }
         #endregion
 
@@ -445,7 +447,7 @@ $@"{{
         public virtual async Task<GroupSummary> GetGroupSummary(string groupId)
         {
             var content = await GetStringAsync($"{_uri}/bot/group/{groupId}/summary").ConfigureAwait(false);
-            return JsonConvert.DeserializeObject<GroupSummary>(content);
+            return JsonConvert.DeserializeObject<GroupSummary>(content) ?? throw new NullReferenceException();
         }
 
         /// <summary>
@@ -458,7 +460,7 @@ $@"{{
         public virtual async Task<MemberCount> GetGroupMemberCount(string groupId)
         {
             var content = await GetStringAsync($"{_uri}/bot/group/{groupId}/members/count").ConfigureAwait(false);
-            return JsonConvert.DeserializeObject<MemberCount>(content);
+            return JsonConvert.DeserializeObject<MemberCount>(content) ?? throw new NullReferenceException();
         }
 
         /// <summary>
@@ -468,7 +470,7 @@ $@"{{
         /// </summary>
         /// <param name="groupId">Identifier of the group</param>
         /// <param name="continuationToken">ContinuationToken</param>
-        public virtual async Task<GroupMemberIds> GetGroupMemberIdsAsync(string groupId, string continuationToken = null)
+        public virtual async Task<GroupMemberIds> GetGroupMemberIdsAsync(string groupId, string? continuationToken = null)
         {
             var requestUrl = $"{_uri}/bot/group/{groupId}/members/ids";
             if (continuationToken != null)
@@ -477,7 +479,7 @@ $@"{{
             }
 
             var content = await GetStringAsync(requestUrl).ConfigureAwait(false);
-            return JsonConvert.DeserializeObject<GroupMemberIds>(content);
+            return JsonConvert.DeserializeObject<GroupMemberIds>(content) ?? throw new NullReferenceException();
         }
 
         /// <summary>
@@ -490,7 +492,7 @@ $@"{{
         public virtual async Task<UserProfile> GetGroupMemberProfileAsync(string groupId, string userId)
         {
             var content = await GetStringAsync($"{_uri}/bot/group/{groupId}/member/{userId}").ConfigureAwait(false);
-            return JsonConvert.DeserializeObject<UserProfile>(content);
+            return JsonConvert.DeserializeObject<UserProfile>(content) ?? throw new NullReferenceException();
         }
 
         /// <summary>
@@ -513,7 +515,7 @@ $@"{{
         public virtual async Task<IList<UserProfile>> GetGroupMemberProfilesAsync(string groupId)
         {
             var result = new List<UserProfile>();
-            string continuationToken = null;
+            string? continuationToken = null;
             do
             {
                 var ids = await GetGroupMemberIdsAsync(groupId, continuationToken);
@@ -542,7 +544,7 @@ $@"{{
         public virtual async Task<MemberCount> GetRoomMemberCountAsync(string roomId)
         {
             var content = await GetStringAsync($"{_uri}/bot/room/{roomId}/members/count").ConfigureAwait(false);
-            return JsonConvert.DeserializeObject<MemberCount>(content);
+            return JsonConvert.DeserializeObject<MemberCount>(content) ?? throw new NullReferenceException();
         }
 
         /// <summary>
@@ -553,7 +555,7 @@ $@"{{
         /// <param name="roomId">Identifier of the room</param>
         /// <param name="continuationToken">ContinuationToken</param>
         /// <returns>GroupMemberIds</returns>
-        public virtual async Task<GroupMemberIds> GetRoomMemberIdsAsync(string roomId, string continuationToken = null)
+        public virtual async Task<GroupMemberIds> GetRoomMemberIdsAsync(string roomId, string? continuationToken = null)
         {
             var requestUrl = $"{_uri}/bot/room/{roomId}/members/ids";
             if (continuationToken != null)
@@ -562,7 +564,7 @@ $@"{{
             }
 
             var content = await GetStringAsync(requestUrl).ConfigureAwait(false);
-            return JsonConvert.DeserializeObject<GroupMemberIds>(content);
+            return JsonConvert.DeserializeObject<GroupMemberIds>(content) ?? throw new NullReferenceException();
         }
 
         /// <summary>
@@ -577,7 +579,7 @@ $@"{{
             var requestUrl = $"{_uri}/bot/room/{roomId}/members/{userId}";
 
             var content = await GetStringAsync(requestUrl).ConfigureAwait(false);
-            return JsonConvert.DeserializeObject<UserProfile>(content);
+            return JsonConvert.DeserializeObject<UserProfile>(content) ?? throw new NullReferenceException();
         }
 
         /// <summary>
@@ -610,8 +612,9 @@ $@"{{
 
             var response = await _client.SendAsync(request).ConfigureAwait(false);
             await response.EnsureSuccessStatusCodeAsync().ConfigureAwait(false);
-            var json = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeAnonymousType(json, new { richMenuId = "" }).richMenuId;
+            var json = await response.Content.ReadAsStringAsync() ?? throw new Exception();
+            var richMenuId = JsonConvert.DeserializeAnonymousType(json, new { richMenuId = "" }) ?? throw new Exception();
+            return richMenuId.richMenuId;
         }
 
         /// <summary>
@@ -623,7 +626,7 @@ $@"{{
         public virtual async Task<RichMenu> GetRichMenuAsync(string richMenuId)
         {
             var json = await GetStringAsync($"{_uri}/bot/richmenu/{richMenuId}").ConfigureAwait(false);
-            return JsonConvert.DeserializeObject<ResponseRichMenu>(json);
+            return JsonConvert.DeserializeObject<ResponseRichMenu>(json) ?? throw new NullReferenceException();
         }
 
         /// <summary>
@@ -646,7 +649,8 @@ $@"{{
         public virtual async Task<string> GetRichMenuIdOfUserAsync(string userId)
         {
             var json = await GetStringAsync($"{_uri}/bot/user/{userId}/richmenu");
-            return JsonConvert.DeserializeAnonymousType(json, new { richMenuId = "" }).richMenuId;
+            var richMenuId = JsonConvert.DeserializeAnonymousType(json, new { richMenuId = "" }) ?? throw new Exception();
+            return richMenuId.richMenuId;
         }
 
         /// <summary>
@@ -755,7 +759,7 @@ $@"{{
 
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-            dynamic result = JsonConvert.DeserializeObject(json);
+            dynamic? result = JsonConvert.DeserializeObject(json);
             if (result == null) { return menus; }
 
             foreach (var dynamicObject in result.richmenus)
@@ -780,7 +784,16 @@ $@"{{
             var response = await _client.PostAsync($"{_uri}/bot/user/{userId}/linkToken", null);
             await response.EnsureSuccessStatusCodeAsync().ConfigureAwait(false);
             var content = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeAnonymousType(content, new { linkToken = "" }).linkToken;
+            var linkToken = JsonConvert.DeserializeObject<LinkTokenClass>(content) ?? throw new Exception();
+            return linkToken.LinkToken;
+        }
+        private class LinkTokenClass
+        {
+            public LinkTokenClass(string linkToken)
+            {
+                LinkToken = linkToken;
+            }
+            public string LinkToken { get; }
         }
 
         #endregion

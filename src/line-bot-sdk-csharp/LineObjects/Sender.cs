@@ -11,7 +11,7 @@ namespace LineMessagingAPI
         /// <summary>
         /// Display name. Certain words such as LINE may not be used. (Max: 20 character)
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// URL of the image to display as an icon when sending a message
@@ -20,16 +20,16 @@ namespace LineMessagingAPI
         /// 1:1
         /// Date size: 1MB
         /// </summary>
-        public string IconUrl { get; set; }
+        public string? IconUrl { get; set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="name"></param>
         /// <param name="iconUrl"></param>
-        public Sender(string name = null, string iconUrl = null)
+        public Sender(string? name = null, string? iconUrl = null)
         {
-            Name = name.Substring(0, Math.Min(name.Length, 20));
+            Name = name?[..Math.Min(name.Length, 20)];
             IconUrl = iconUrl;
         }
     }

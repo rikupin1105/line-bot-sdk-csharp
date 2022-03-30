@@ -13,8 +13,8 @@ namespace LineMessagingAPI
         /// Imagemap
         /// </summary>
         public MessageType Type { get; } = MessageType.Imagemap;
-        public QuickReply QuickReply { get; set; }
-        public Sender Sender { get; set; }
+        public QuickReply? QuickReply { get; set; }
+        public Sender? Sender { get; set; }
 
         /// <summary>
         /// Base URL of image (Max: 2000 characters)
@@ -36,7 +36,7 @@ namespace LineMessagingAPI
         /// <summary>
         /// Video to play on imagemap
         /// </summary>
-        public ImagemapVideo Video { get; }
+        public ImagemapVideo? Video { get; }
 
         /// <summary>
         /// Action when tapped.
@@ -54,10 +54,10 @@ namespace LineMessagingAPI
         /// <param name="quickReply"></param>
         /// <param name="video"></param>
         /// <param name="sender"></param>
-        public ImagemapMessage(string baseUrl, string altText, BaseSize baseSize, IList<IImagemapAction> actions, ImagemapVideo video = null, QuickReply quickReply = null, Sender sender = null)
+        public ImagemapMessage(string baseUrl, string altText, BaseSize baseSize, IList<IImagemapAction> actions, ImagemapVideo? video = null, QuickReply? quickReply = null, Sender? sender = null)
         {
-            BaseUrl = baseUrl.Substring(0, Math.Min(altText.Length, 2000));
-            AltText = altText.Substring(0, Math.Min(altText.Length, 400));
+            BaseUrl = baseUrl[..Math.Min(altText.Length, 2000)];
+            AltText = altText[..Math.Min(altText.Length, 400)];
             BaseSize = baseSize;
             Actions = actions;
             QuickReply = quickReply;

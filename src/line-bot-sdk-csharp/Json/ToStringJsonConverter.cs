@@ -13,9 +13,12 @@ namespace LineMessagingAPI
             return true;
         }
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {
-            writer.WriteValue(value.ToString());
+            if (value is not null)
+            {
+                writer.WriteValue(value.ToString());
+            }
         }
 
         public override bool CanRead
@@ -23,7 +26,7 @@ namespace LineMessagingAPI
             get { return false; }
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
         {
             throw new NotImplementedException();
         }

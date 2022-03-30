@@ -11,8 +11,8 @@
         /// Image
         /// </summary>
         public MessageType Type { get; } = MessageType.Image;
-        public QuickReply QuickReply { get; set; }
-        public Sender Sender { get; set; }
+        public QuickReply? QuickReply { get; set; }
+        public Sender? Sender { get; set; }
 
         /// <summary>
         /// Image URL (Max: 2000 characters)
@@ -39,7 +39,7 @@
         /// <param name="previerImageUrl"></param>
         /// <param name="quickReply"></param>
         /// <param name="sender"></param>
-        public ImageMessage(string originalContentUrl, string previerImageUrl, QuickReply quickReply = null, Sender sender = null)
+        public ImageMessage(string originalContentUrl, string previerImageUrl, QuickReply? quickReply = null, Sender? sender = null)
         {
             OriginalContentUrl = originalContentUrl;
             PreviewImageUrl = previerImageUrl;

@@ -15,11 +15,11 @@ namespace LineMessagingAPI
             this.enumStrPairs = enumStrPairs ?? new Dictionary<TEnum, string>();
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
         {
             if (reader.TokenType == JsonToken.String)
             {
-                var value = (string)reader.Value;
+                var value = (string?)reader.Value;
 
                 if (enumStrPairs.Any(kvp => value == kvp.Value))
                 {
@@ -29,16 +29,18 @@ namespace LineMessagingAPI
             return base.ReadJson(reader, objectType, existingValue, serializer);
         }
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {
-
-            if (enumStrPairs.TryGetValue((TEnum)value, out string name))
+            if (value is not null)
             {
-                writer.WriteValue(name);
-            }
-            else
-            {
-                base.WriteJson(writer, value, serializer);
+                if (enumStrPairs.TryGetValue((TEnum)value, out string? name))
+                {
+                    writer.WriteValue(name);
+                }
+                else
+                {
+                    base.WriteJson(writer, value, serializer);
+                }
             }
         }
     }

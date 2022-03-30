@@ -25,11 +25,11 @@ namespace LineMessagingAPI
         /// One or more LINE emoji.
         /// Max: 20 emojis
         /// </summary>
-        public Emoji[] Emojis { get; set; }
+        public Emoji[]? Emojis { get; set; }
 
 
-        public QuickReply QuickReply { get; set; }
-        public Sender Sender { get; set; }
+        public QuickReply? QuickReply { get; set; }
+        public Sender? Sender { get; set; }
 
         /// <summary>
         /// Constractor
@@ -38,9 +38,9 @@ namespace LineMessagingAPI
         /// <param name="emojis"></param>
         /// <param name="quickReply"></param>
         /// <param name="sender"></param>
-        public TextMessage(string text, Emoji[] emojis = null, QuickReply quickReply = null, Sender sender = null)
+        public TextMessage(string text, Emoji[]? emojis = null, QuickReply? quickReply = null, Sender? sender = null)
         {
-            Text = text.Substring(0, Math.Min(text.Length, 5000));
+            Text = text[..Math.Min(text.Length, 5000)];
             Emojis = emojis;
             QuickReply = quickReply;
             Sender = sender;

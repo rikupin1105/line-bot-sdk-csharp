@@ -12,8 +12,8 @@ namespace LineMessagingAPI
         /// Template
         /// </summary>
         public MessageType Type { get; } = MessageType.Template;
-        public QuickReply QuickReply { get; set; }
-        public Sender Sender { get; set; }
+        public QuickReply? QuickReply { get; set; }
+        public Sender? Sender { get; set; }
 
         /// <summary>
         /// A Buttons, Confirm, Carousel, or Image Carousel object.
@@ -32,9 +32,9 @@ namespace LineMessagingAPI
         /// <param name="template"></param>
         /// <param name="quickReply"></param>
         /// <param name="sender"></param>
-        public TemplateMessage(string altText, ITemplate template, QuickReply quickReply = null, Sender sender = null)
+        public TemplateMessage(string altText, ITemplate template, QuickReply? quickReply = null, Sender? sender = null)
         {
-            AltText = altText.Substring(0, Math.Min(altText.Length, 400));
+            AltText = altText[..Math.Min(altText.Length, 400)];
             Template = template;
             QuickReply = quickReply;
             Sender = sender;

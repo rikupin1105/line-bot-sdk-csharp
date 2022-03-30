@@ -10,8 +10,8 @@
         /// Audio
         /// </summary>
         public MessageType Type { get; } = MessageType.Audio;
-        public QuickReply QuickReply { get; set; }
-        public Sender Sender { get; set; }
+        public QuickReply? QuickReply { get; set; }
+        public Sender? Sender { get; set; }
         /// <summary>
         /// URL of the audio file (Max: 2000 characters)
         /// HTTPS over TLS 1.2 or later
@@ -31,7 +31,7 @@
         /// <param name="duration"></param>
         /// <param name="quickReply"></param>
         /// <param name="sender"></param>
-        public AudioMessage(string originalContentUrl, long duration, QuickReply quickReply = null, Sender sender = null)
+        public AudioMessage(string originalContentUrl, long duration, QuickReply? quickReply = null, Sender? sender = null)
         {
             OriginalContentUrl = originalContentUrl;
             Duration = duration;

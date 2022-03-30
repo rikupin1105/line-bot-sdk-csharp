@@ -10,8 +10,8 @@
         /// Video
         /// </summary>
         public MessageType Type { get; } = MessageType.Video;
-        public QuickReply QuickReply { get; set; }
-        public Sender Sender { get; set; }
+        public QuickReply? QuickReply { get; set; }
+        public Sender? Sender { get; set; }
 
         /// <summary>
         /// URL of video file (Max: 2000 characters)
@@ -34,7 +34,7 @@
         /// Max: 100 characters
         /// Supported character types: Half-width alphanumeric characters (a-z, A-Z, 0-9) and symbols (-.=,+*()%$&;:@{}!?<>[])
         /// </summary>
-        public string TrackingId { get; set; }
+        public string? TrackingId { get; set; }
 
         /// <summary>
         /// Constructor
@@ -44,7 +44,7 @@
         /// <param name="trackingId"></param>
         /// <param name="quickReply"></param>
         /// <param name="sender"></param>
-        public VideoMessage(string originalContentUrl, string previerImageUrl, string trackingId = null, QuickReply quickReply = null, Sender sender = null)
+        public VideoMessage(string originalContentUrl, string previerImageUrl, string? trackingId = null, QuickReply? quickReply = null, Sender? sender = null)
         {
             OriginalContentUrl = originalContentUrl;
             PreviewImageUrl = previerImageUrl;
