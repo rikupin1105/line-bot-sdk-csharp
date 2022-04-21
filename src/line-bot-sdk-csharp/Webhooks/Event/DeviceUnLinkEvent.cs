@@ -5,7 +5,7 @@
     /// </summary>
     public class DeviceUnlinkEvent : DeviceEvent
     {
-        public DeviceUnlinkEvent(WebhookEventSource source, long timestamp, Things things,string mode) : base(source, timestamp, things,mode)
+        public DeviceUnlinkEvent(WebhookEventSource source, long timestamp, Things things, string mode, string webhookEventId, DeliveryContext deliveryContext) : base(source, timestamp, things, mode, webhookEventId, deliveryContext)
         {
         }
     }

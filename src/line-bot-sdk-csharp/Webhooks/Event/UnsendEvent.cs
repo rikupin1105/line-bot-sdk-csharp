@@ -7,7 +7,7 @@
     {
         public Unsend Unsend;
 
-        public UnsendEvent(WebhookEventSource source, long timestamp, string mode, Unsend unsend) : base(WebhookEventType.Unsend, source, timestamp, mode)
+        public UnsendEvent(WebhookEventSource source, long timestamp, string mode, Unsend unsend, string webhookEventId, DeliveryContext deliveryContext) : base(WebhookEventType.Unsend, source, timestamp, mode, webhookEventId, deliveryContext)
         {
             Unsend = unsend;
         }
