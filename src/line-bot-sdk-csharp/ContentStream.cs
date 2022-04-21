@@ -15,7 +15,7 @@ namespace LineMessagingAPI
         {
             get
             {
-                if (_baseStream == null) { throw new ObjectDisposedException(nameof(BaseStream)); }
+                if (_baseStream is null) { throw new ObjectDisposedException(nameof(BaseStream)); }
                 return _baseStream;
             }
         }

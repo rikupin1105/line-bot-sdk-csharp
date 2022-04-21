@@ -27,7 +27,7 @@ namespace LineMessagingAPI.Webhooks
         internal static EventMessage CreateFrom(dynamic dynamicObject)
         {
             var message = dynamicObject?.message;
-            if (message == null) { return null; }
+            if (message is null) { return null; }
             if (!Enum.TryParse((string)message.type, true, out EventMessageType messageType))
             {
                 return null;
@@ -92,7 +92,7 @@ namespace LineMessagingAPI.Webhooks
                                     (string)message.contentProvider?.originalContentUrl,
                                     (string)message.contentProvider?.previewContentUrl);
                         }
-                        if (message.imageSet != null)
+                        if (message.imageSet is not null)
                         {
                             imageSet = new ImageSet((string)message.imageSet.id, (int)message.imageSet.index, (int)message.imageSet.total);
                         }

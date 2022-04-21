@@ -8,12 +8,12 @@ namespace LineMessagingAPI.Webhooks
         public static IEnumerable<WebhookEvent> Parse(string webhookContent)
         {
             dynamic dynamicObject = JsonConvert.DeserializeObject(webhookContent);
-            if (dynamicObject == null) { yield break; }
+            if (dynamicObject is null) { yield break; }
 
             foreach (var ev in dynamicObject.events)
             {
                 var webhookEvent = WebhookEvent.CreateFrom(ev);
-                if (webhookEvent == null) { continue; }
+                if (webhookEvent is null) { continue; }
                 yield return webhookEvent;
             }
         }
@@ -23,7 +23,7 @@ namespace LineMessagingAPI.Webhooks
             foreach (var ev in events)
             {
                 var webhookEvent = WebhookEvent.CreateFrom(ev);
-                if (webhookEvent == null) { continue; }
+                if (webhookEvent is null) { continue; }
                 yield return webhookEvent;
             }
         }

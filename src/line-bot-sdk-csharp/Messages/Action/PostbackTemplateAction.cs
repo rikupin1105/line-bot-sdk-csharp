@@ -81,7 +81,7 @@ namespace LineMessagingAPI
         {
             bool useDisplayText = true;
             string text = dynamicObject?.displayText;
-            if (text == null)
+            if (text is null)
             {
                 text = dynamicObject?.text;
                 useDisplayText = false;

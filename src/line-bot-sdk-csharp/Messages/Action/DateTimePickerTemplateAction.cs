@@ -118,9 +118,9 @@ namespace LineMessagingAPI
         {
             var format = GetDateTimeFormat(mode);
             Initialize(label, data, mode,
-                initial == null ? null : ((DateTime)initial).ToString(format),
-                min == null ? null : ((DateTime)min).ToString(format),
-                max == null ? null : ((DateTime)max).ToString(format));
+                initial is null ? null : ((DateTime)initial).ToString(format),
+                min is null ? null : ((DateTime)min).ToString(format),
+                max is null ? null : ((DateTime)max).ToString(format));
         }
 
         internal void Initialize(string label, string data, DateTimePickerMode mode, string initial, string min, string max)
