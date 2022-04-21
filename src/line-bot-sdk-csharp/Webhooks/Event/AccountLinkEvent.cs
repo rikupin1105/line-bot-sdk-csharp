@@ -11,8 +11,8 @@
         /// </summary>
         public Link Link { get; }
 
-        public AccountLinkEvent(WebhookEventSource source, long timestamp, string replyToken, Link link, string mode)
-            : base(WebhookEventType.AccountLink, source, timestamp, replyToken, mode)
+        public AccountLinkEvent(WebhookEventSource source, long timestamp, string replyToken, Link link, string mode, string webhookEventId, DeliveryContext deliveryContext)
+            : base(WebhookEventType.AccountLink, source, timestamp, replyToken, mode, webhookEventId, deliveryContext)
         {
             Link = link;
         }

@@ -4,7 +4,7 @@
     {
         public VideoPlayComplete VideoPlayComplete;
 
-        public VideoViewingCompleteEvent(WebhookEventSource source, long timestamp, string mode, string replyToken, VideoPlayComplete videoPlayComplete) : base(WebhookEventType.VideoPlayComplete, source, timestamp, replyToken, mode)
+        public VideoViewingCompleteEvent(WebhookEventSource source, long timestamp, string mode, string replyToken, VideoPlayComplete videoPlayComplete, string webhookEventId, DeliveryContext deliveryContext) : base(WebhookEventType.VideoPlayComplete, source, timestamp, replyToken, mode, webhookEventId, deliveryContext)
         {
             VideoPlayComplete = videoPlayComplete;
         }

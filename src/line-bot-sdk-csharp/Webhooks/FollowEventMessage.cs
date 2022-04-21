@@ -5,8 +5,8 @@
     /// </summary>
     public class FollowEventMessage : ReplyableEvent
     {
-        public FollowEventMessage(WebhookEventSource source, long timestamp, string replyToken, string mode)
-            : base(WebhookEventType.Follow, source, timestamp, replyToken, mode)
+        public FollowEventMessage(WebhookEventSource source, long timestamp, string replyToken, string mode, string webhookEventId, DeliveryContext deliveryContext)
+            : base(WebhookEventType.Follow, source, timestamp, replyToken, mode, webhookEventId, deliveryContext)
         {
         }
     }
