@@ -44,11 +44,11 @@ namespace LineMessagingAPI.Webhooks
 
         internal static WebhookEvent CreateFrom(dynamic dynamicObject)
         {
-            if (dynamicObject == null) { throw new ArgumentNullException(nameof(dynamicObject)); }
+            if (dynamicObject is null) { throw new ArgumentNullException(nameof(dynamicObject)); }
 
             var eventSource = WebhookEventSource.CreateFrom(dynamicObject?.source);
 
-            if (eventSource == null)
+            if (eventSource is null)
             {
                 return null;
             }
@@ -61,7 +61,7 @@ namespace LineMessagingAPI.Webhooks
             {
                 case WebhookEventType.Message:
                     EventMessage eventMessage = EventMessage.CreateFrom(dynamicObject);
-                    if (eventMessage == null) { return null; }
+                    if (eventMessage is null) { return null; }
                     return new MessageEvent(eventSource, (long)dynamicObject.timestamp, eventMessage, (string)dynamicObject.replyToken, (string)dynamicObject.mode, (string)dynamicObject.webhookEventId, new DeliveryContext((bool)dynamicObject.deliveryContext.isRedelivery));
 
                 case WebhookEventType.Unsend:

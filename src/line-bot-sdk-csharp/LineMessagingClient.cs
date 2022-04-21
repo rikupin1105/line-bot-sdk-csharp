@@ -212,7 +212,7 @@ namespace LineMessagingAPI
         public virtual async Task MultiCastMessageAsync(IList<string> to, IList<ISendMessage> messages, bool notificationDisabled = false, string? RetryKey = null)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, $"{_uri}/bot/message/multicast");
-            if (RetryKey != null)
+            if (RetryKey is not null)
             {
                 _client.DefaultRequestHeaders.Add("X-Line-Retry-Key", RetryKey);
             }
@@ -239,7 +239,7 @@ $@"{{
     ""messages"" : [{string.Join(", ", messages)}] 
     ""notificationDisabled"" : {notificationDisabled}
 }}";
-            if (RetryKey != null)
+            if (RetryKey is not null)
             {
                 _client.DefaultRequestHeaders.Add("X-Line-Retry-Key", RetryKey);
             }
@@ -473,7 +473,7 @@ $@"{{
         public virtual async Task<GroupMemberIds> GetGroupMemberIdsAsync(string groupId, string? continuationToken = null)
         {
             var requestUrl = $"{_uri}/bot/group/{groupId}/members/ids";
-            if (continuationToken != null)
+            if (continuationToken is not null)
             {
                 requestUrl += $"?start={continuationToken}";
             }
@@ -526,7 +526,7 @@ $@"{{
                 result.AddRange(profiles);
                 continuationToken = ids.Next;
             }
-            while (continuationToken != null);
+            while (continuationToken is not null);
             return result;
         }
 
@@ -558,7 +558,7 @@ $@"{{
         public virtual async Task<GroupMemberIds> GetRoomMemberIdsAsync(string roomId, string? continuationToken = null)
         {
             var requestUrl = $"{_uri}/bot/room/{roomId}/members/ids";
-            if (continuationToken != null)
+            if (continuationToken is not null)
             {
                 requestUrl += $"?start={continuationToken}";
             }
@@ -760,7 +760,7 @@ $@"{{
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             dynamic? result = JsonConvert.DeserializeObject(json);
-            if (result == null) { return menus; }
+            if (result is null) { return menus; }
 
             foreach (var dynamicObject in result.richmenus)
             {

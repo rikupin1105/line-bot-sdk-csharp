@@ -28,7 +28,7 @@ namespace LineMessagingAPI.Webhooks
 
         internal static WebhookEventSource CreateFrom(dynamic source)
         {
-            if (source == null) { return null; }
+            if (source is null) { return null; }
             if (!Enum.TryParse((string)source.type, true, out EventSourceType sourceType))
             {
                 return null;

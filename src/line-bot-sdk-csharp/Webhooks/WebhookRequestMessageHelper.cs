@@ -19,10 +19,10 @@ namespace LineMessagingAPI.Webhooks
         /// <param name="channelSecret">ChannelSecret</param>
         /// <param name="botUserId">BotUserId</param>
         /// <returns>List of WebhookEvent</returns>
-        public static async Task<IEnumerable<WebhookEvent>> GetWebhookEventsAsync(this HttpRequestMessage request, string channelSecret, string botUserId = null)
+        public static async Task<IEnumerable<WebhookEvent>> GetWebhookEventsAsync(this HttpRequestMessage request, string channelSecret, string? botUserId = null)
         {
-            if (request == null) { throw new ArgumentNullException(nameof(request)); }
-            if (channelSecret == null) { throw new ArgumentNullException(nameof(channelSecret)); }
+            if (request is null) { throw new ArgumentNullException(nameof(request)); }
+            if (channelSecret is null) { throw new ArgumentNullException(nameof(channelSecret)); }
 
             var content = await request.Content.ReadAsStringAsync();
 

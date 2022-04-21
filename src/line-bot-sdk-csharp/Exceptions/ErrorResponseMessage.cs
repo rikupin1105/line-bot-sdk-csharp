@@ -22,7 +22,7 @@ namespace LineMessagingAPI
 
         public override string ToString()
         {
-            return (Details == null) ? Message : $"{Message},[{string.Join(",", Details)}]";
+            return (Details is null) ? Message : $"{Message},[{string.Join(",", Details)}]";
         }
     }
 }

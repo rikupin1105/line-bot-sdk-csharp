@@ -70,7 +70,7 @@ namespace LineMessagingAPI
         internal static UriTemplateAction CreateFrom(dynamic dynamicObject)
         {
             var desktopUri = (string)dynamicObject?.altUri?.desktop;
-            var altUri = (desktopUri == null) ? null : new AltUri(desktopUri);
+            var altUri = (desktopUri is null) ? null : new AltUri(desktopUri);
             return new UriTemplateAction((string)dynamicObject?.label, (string)dynamicObject?.uri, altUri);
         }
     }

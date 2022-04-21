@@ -45,7 +45,7 @@ namespace LineMessagingAPI
         /// </param>
         /// <returns>BoxContainer</returns>
         public static BubbleContainer SetHeader(this BubbleContainer self, BoxLayout boxLayout,
-            int? flex = null, string spacing = null, string margin = null)
+            int? flex = null, string? spacing = null, string? margin = null)
         {
             self.Header = new BoxComponent(boxLayout)
             {
@@ -64,7 +64,7 @@ namespace LineMessagingAPI
         /// <returns>BubbleContainer</returns>
         public static BubbleContainer AddHeaderContents(this BubbleContainer self, IFlexComponent component)
         {
-            if (self.Header == null) { throw new InvalidOperationException("Header not exists."); }
+            if (self.Header is null) { throw new InvalidOperationException("Header not exists."); }
             self.Header.Contents.Add(component);
             return self;
         }
@@ -127,7 +127,7 @@ namespace LineMessagingAPI
         /// <returns>BubbleContainer</returns>
         public static BubbleContainer AddBodyContents(this BubbleContainer self, IFlexComponent component)
         {
-            if (self.Body == null) { throw new InvalidOperationException("Body not exists."); }
+            if (self.Body is null) { throw new InvalidOperationException("Body not exists."); }
             self.Body.Contents.Add(component);
             return self;
         }
@@ -190,7 +190,7 @@ namespace LineMessagingAPI
         /// <returns>BubbleContainer</returns>
         public static BubbleContainer AddFooterContents(this BubbleContainer self, IFlexComponent component)
         {
-            if (self.Footer == null) { throw new InvalidOperationException("Footer not exists."); }
+            if (self.Footer is null) { throw new InvalidOperationException("Footer not exists."); }
             self.Footer.Contents.Add(component);
             return self;
         }
@@ -300,7 +300,7 @@ namespace LineMessagingAPI
         /// <returns>BubbleContainer</returns>
         public static BubbleContainer SetHeroAction(this BubbleContainer self, ITemplateAction action)
         {
-            if (self.Hero == null) { throw new InvalidOperationException("Hero not exists."); }
+            if (self.Hero is null) { throw new InvalidOperationException("Hero not exists."); }
             self.Hero.Action = action;
             return self;
         }
@@ -325,7 +325,7 @@ namespace LineMessagingAPI
         /// <returns>BubbleContainer</returns>
         public static BubbleContainer SetHeaderStyle(this BubbleContainer self, BlockStyle style)
         {
-            if (self.Styles == null)
+            if (self.Styles is null)
             {
                 self.Styles = new BubbleStyles();
             }
@@ -341,7 +341,7 @@ namespace LineMessagingAPI
         /// <returns>BubbleContainer</returns>
         public static BubbleContainer SetHeroStyle(this BubbleContainer self, BlockStyle style)
         {
-            if (self.Styles == null)
+            if (self.Styles is null)
             {
                 self.Styles = new BubbleStyles();
             }
@@ -357,7 +357,7 @@ namespace LineMessagingAPI
         /// <returns>BubbleContainer</returns>
         public static BubbleContainer SetBodyStyle(this BubbleContainer self, BlockStyle style)
         {
-            if (self.Styles == null)
+            if (self.Styles is null)
             {
                 self.Styles = new BubbleStyles();
             }
@@ -373,7 +373,7 @@ namespace LineMessagingAPI
         /// <returns>BubbleContainer</returns>
         public static BubbleContainer SetFooterStyle(this BubbleContainer self, BlockStyle style)
         {
-            if (self.Styles == null)
+            if (self.Styles is null)
             {
                 self.Styles = new BubbleStyles();
             }
