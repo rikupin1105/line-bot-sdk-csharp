@@ -60,6 +60,7 @@ namespace LineMessagingAPI.Webhooks
                             var mentionees = new Mentionees(
                                 (int)message.mention.mentionees[i]?.index,
                                 (int)message.mention.mentionees[i]?.length,
+                                (string)message.mention.mentionees[i]?.type,
                                 (string)message.mention.mentionees[i]?.userId);
                             mentionees_list.Add(mentionees);
                         }
