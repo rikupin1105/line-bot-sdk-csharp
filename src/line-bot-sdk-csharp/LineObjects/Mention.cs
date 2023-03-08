@@ -11,15 +11,17 @@
 
     public class Mentionees
     {
-        public Mentionees(int index,int length,string userId)
+        public Mentionees(int index,int length,string type,string? userId)
         {
             Index = index;
             Length = length;
+            Type = type;
             UserId = userId;
         }
         public int Index { get; set; }
         public int Length { get; set; }
-        public string UserId { get; set; }
+        public string Type { get; set; }
+        public string? UserId { get; set; }
     }
 
 }
