@@ -1,4 +1,5 @@
-using LineMessagingAPI.Webhooks;
+using LineMessagingAPI.Webhook;
+using LineMessagingAPI.Webhook.Event;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
