@@ -16,6 +16,7 @@
         public string Color { get; set; }
         public Gravity? Gravity { get; set; }
         public string AdjustMode { get; set; }
+        public bool? Scaling { get; set; }
         public ButtonComponent(ITemplateAction action)
         {
             Action = action;

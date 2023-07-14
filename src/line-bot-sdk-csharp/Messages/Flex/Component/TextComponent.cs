@@ -16,6 +16,7 @@ namespace LineMessagingAPI
         public string OffsetStart { get; set; }
         public string OffsetEnd { get; set; }
         public string Size { get; set; }
+        public bool? Scalling { get; set; }
         public Align? Align { get; set; }
         public Gravity? Gravity { get; set; }
         public bool? Wrap { get; set; }

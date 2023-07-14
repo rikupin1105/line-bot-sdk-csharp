@@ -19,6 +19,7 @@
         public string OffsetStart { get; set; }
         public string OffsetEnd { get; set; }
         public string Size { get; set; }
+        public bool? Scaling { get; set; }
         public string AspectRatio { get; set; }
 
         /// <summary>
