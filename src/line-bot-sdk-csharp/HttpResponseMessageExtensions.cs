@@ -1,4 +1,4 @@
-﻿using LineMessagingAPI.Exceptions;
+﻿using LineMessagingAPI.Core.Exceptions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
