@@ -18,7 +18,7 @@ namespace LineMessagingAPI
         
         public CameraRollTemplateAction(string label)
         {
-            Label = label.Substring(0, Math.Min(label.Length, 20));
+            Label = label[..Math.Min(label.Length, 20)];
         }
 
         internal static CameraRollTemplateAction CreateFrom(dynamic dynamicObject)

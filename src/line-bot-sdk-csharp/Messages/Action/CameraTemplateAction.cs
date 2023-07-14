@@ -18,7 +18,7 @@ namespace LineMessagingAPI
         
         public CameraTemplateAction(string label)
         {
-            Label = label.Substring(0, Math.Min(label.Length, 20));
+            Label = label[..Math.Min(label.Length, 20)];
         }
 
         internal static CameraTemplateAction CreateFrom(dynamic dynamicObject)
