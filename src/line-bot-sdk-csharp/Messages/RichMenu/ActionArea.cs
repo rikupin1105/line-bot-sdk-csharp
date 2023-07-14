@@ -2,7 +2,7 @@
 {
     /// <summary>
     /// Rich menu  Area
-    /// https://developers.line.me/en/refelence/messaging-api/#area-object
+    /// https://developers.line.biz/ja/reference/messaging-api/#area-object
     /// </summary>
     public class ActionArea
     {
@@ -16,17 +16,15 @@
         /// </summary>
         public ITemplateAction Action { get; set; }
 
-        internal static ActionArea CreateFrom(dynamic dynamicObject)
+        public ActionArea(dynamic dynamicObject)
         {
-            return new ActionArea()
-            {
-                Bounds = new ActionBounds(
-                    (int)(dynamicObject?.bounds?.x ?? 0),
-                    (int)(dynamicObject?.bounds?.y ?? 0),
-                    (int)(dynamicObject?.bounds?.width ?? 0),
-                    (int)(dynamicObject?.bounds?.height ?? 0)),
-                Action = ParseTemplateAction(dynamicObject?.action)
-            };
+            Bounds = new ActionBounds(
+                (int)(dynamicObject?.bounds?.x ?? 0),
+                (int)(dynamicObject?.bounds?.y ?? 0),
+                (int)(dynamicObject?.bounds?.width ?? 0),
+                (int)(dynamicObject?.bounds?.height ?? 0));
+
+            Action = ParseTemplateAction(dynamicObject?.action);
         }
 
         public static ITemplateAction ParseTemplateAction(dynamic dynamicObject)
@@ -41,7 +39,7 @@
                 TemplateActionType.Camera => CameraTemplateAction.CreateFrom(dynamicObject),
                 TemplateActionType.CameraRoll => CameraRollTemplateAction.CreateFrom(dynamicObject),
                 TemplateActionType.Location => LocationTemplateAction.CreateFrom(dynamicObject),
-                _ => null,
+                _ => throw new System.Exception(),
             };
         }
     }

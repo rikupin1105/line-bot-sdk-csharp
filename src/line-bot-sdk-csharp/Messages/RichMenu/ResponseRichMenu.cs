@@ -34,7 +34,7 @@ namespace LineMessagingAPI
             var areas = new List<ActionArea>();
             foreach (var area in dynamicObject.areas ?? Enumerable.Empty<dynamic>())
             {
-                areas.Add(ActionArea.CreateFrom(area));
+                areas.Add(new ActionArea(area));
             }
 
             var menu = new RichMenu(
