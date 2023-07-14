@@ -31,22 +31,26 @@ namespace LineMessagingAPI
 
         internal static ResponseRichMenu CreateFrom(dynamic dynamicObject)
         {
+            if(dynamicObject == null)
+            {
+                throw new System.NullReferenceException();
+            }
 
             var areas = new List<ActionArea>();
-            foreach (var area in dynamicObject?.areas ?? Enumerable.Empty<dynamic>())
+            foreach (var area in dynamicObject.areas ?? Enumerable.Empty<dynamic>())
             {
                 areas.Add(ActionArea.CreateFrom(area));
             }
 
             var menu = new RichMenu()
             {
-                Name = (string)dynamicObject?.name,
-                Size = new ActionSize((int)(dynamicObject?.size?.width ?? 0), (int)(dynamicObject?.size?.height ?? 0)),
-                Selected = (bool)(dynamicObject?.selected ?? false),
-                ChatBarText = (string)dynamicObject?.chatBarText,
+                Name = (string)dynamicObject.name,
+                Size = new ActionSize((int)(dynamicObject.size?.width ?? 0), (int)(dynamicObject.size?.height ?? 0)),
+                Selected = (bool)(dynamicObject.selected ?? false),
+                ChatBarText = (string)dynamicObject.chatBarText,
                 Areas = areas
             };
-            return new ResponseRichMenu((string)dynamicObject?.richMenuId, menu);
+            return new ResponseRichMenu((string)dynamicObject.richMenuId, menu);
         }
     }
 }
