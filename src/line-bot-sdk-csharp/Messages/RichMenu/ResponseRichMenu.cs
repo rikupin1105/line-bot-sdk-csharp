@@ -19,19 +19,14 @@ namespace LineMessagingAPI
         /// </summary>
         /// <param name="richMenuId"></param>
         /// <param name="source"></param>
-        public ResponseRichMenu(string richMenuId, RichMenu source)
+        public ResponseRichMenu(string richMenuId, RichMenu source) : base(source.Size, source.Selected, source.Name, source.ChatBarText, source.Areas)
         {
             RichMenuId = richMenuId;
-            Size = source.Size;
-            Selected = source.Selected;
-            Name = source.Name;
-            ChatBarText = source.ChatBarText;
-            Areas = source.Areas;
         }
 
         internal static ResponseRichMenu CreateFrom(dynamic dynamicObject)
         {
-            if(dynamicObject == null)
+            if (dynamicObject == null)
             {
                 throw new System.NullReferenceException();
             }
@@ -42,14 +37,13 @@ namespace LineMessagingAPI
                 areas.Add(ActionArea.CreateFrom(area));
             }
 
-            var menu = new RichMenu()
-            {
-                Name = (string)dynamicObject.name,
-                Size = new ActionSize((int)(dynamicObject.size?.width ?? 0), (int)(dynamicObject.size?.height ?? 0)),
-                Selected = (bool)(dynamicObject.selected ?? false),
-                ChatBarText = (string)dynamicObject.chatBarText,
-                Areas = areas
-            };
+            var menu = new RichMenu(
+                new ActionSize((int)(dynamicObject.size?.width ?? 0),  (int)(dynamicObject.size?.height ?? 0)),
+                (bool)(dynamicObject.selected ?? false),
+                (string)dynamicObject.name, 
+                (string)dynamicObject.chatBarText, 
+                areas);
+
             return new ResponseRichMenu((string)dynamicObject.richMenuId, menu);
         }
     }

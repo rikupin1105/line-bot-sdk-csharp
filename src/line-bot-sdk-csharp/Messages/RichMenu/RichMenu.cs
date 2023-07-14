@@ -46,15 +46,10 @@ namespace LineMessagingAPI
         {
             Size = size;
             Selected = selected;
-            Name = name.Substring(0, Math.Min(name.Length, 300));
-            ChatBarText = chatBarText.Substring(0, Math.Min(chatBarText.Length, 14));
+            Name = name[..Math.Min(name.Length, 300)];
+            ChatBarText = chatBarText[..Math.Min(chatBarText.Length, 14)];
             Areas = areas;
         }
-
-        public RichMenu()
-        {
-        }
-
 
         /// <summary>
         /// Converts from RichMenu to ResponseRichMenu
