@@ -57,7 +57,7 @@ namespace LineMessagingAPI
         /// </param>
         public UriTemplateAction(string label, string uri, AltUri altUri = null)
         {
-            Label = label?.Substring(0, Math.Min(label.Length, 20));
+            Label = label?[..Math.Min(label.Length, 20)];
             Uri = uri;
             AltUri = altUri;
         }
