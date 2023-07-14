@@ -32,7 +32,8 @@ namespace LineMessagingAPI
                         NullValueHandling = NullValueHandling.Ignore
                     };
                     jsonSerializerSettings.Converters.Add(new StringEnumConverter { NamingStrategy = new CamelCaseNamingStrategy() });
-                    errorMessage = JsonConvert.DeserializeObject<ErrorResponseMessage>(content, jsonSerializerSettings);
+                    errorMessage = JsonConvert.DeserializeObject<ErrorResponseMessage>(content, jsonSerializerSettings)
+                        ?? throw new System.NullReferenceException();
                 }
                 catch
                 {

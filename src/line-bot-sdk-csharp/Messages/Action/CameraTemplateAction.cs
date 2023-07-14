@@ -23,7 +23,8 @@ namespace LineMessagingAPI
 
         internal static CameraTemplateAction CreateFrom(dynamic dynamicObject)
         {
-            return new CameraTemplateAction((string)dynamicObject?.label);
+            var label = (string)dynamicObject.label ?? "Camera";
+            return new CameraTemplateAction(label);
         }
     }
 }
