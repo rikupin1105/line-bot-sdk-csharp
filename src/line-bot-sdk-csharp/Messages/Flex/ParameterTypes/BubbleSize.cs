@@ -4,6 +4,8 @@
     {
         nano,
         micro,
+        deca,
+        hecto,
         kilo,
         mega,
         giga
